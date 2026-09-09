@@ -13,7 +13,8 @@ import {
   Send,
   History,
   GraduationCap,
-  MessageSquare
+  MessageSquare,
+  Clock
 } from 'lucide-react';
 
 export function ExpertView({ activeStoryStep, onStoryActionComplete, onOpenCaseChat }) {
