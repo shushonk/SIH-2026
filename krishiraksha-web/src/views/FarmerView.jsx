@@ -842,95 +842,127 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
               </div>
 
               {/* Practical Action Guidelines (Multi-layered cards) */}
-              <div className="md:col-span-7 flex flex-col justify-between gap-2.5">
-                {/* Advice Card 1: Green / Organic NSKE Protocol */}
-                <div className="p-3 rounded-xl bg-slate-950/80 border border-emerald-500/20 flex items-start gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/30">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-white">जैविक उपचार (Organic Remedy)</span>
-                      <span className="px-2 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px]">प्राधान्य १</span>
+              <div className="md:col-span-7 flex flex-col justify-between gap-3">
+                {/* ₹15 Sachet Micro-Transaction Strip (cultivai_ai_diagnosis_report) */}
+                <div className="bg-slate-950/90 border border-slate-800 rounded-xl p-3 flex items-center justify-between shadow-inner">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/30">
+                      ₹
                     </div>
-                    <p className="text-xs text-slate-200 mt-1">
-                      <strong>५% निंबोळी अर्क (NSKE) फवारा:</strong> १५ लिटर पंपासाठी ५० मिली वापरा. पानांच्या मागील भागावर विशेष फवारणी करा.
-                    </p>
-                    <span className="text-[10px] text-slate-400 block mt-1">Eco-safe • Pollinator friendly • Low cost (₹40/acre)</span>
+                    <div>
+                      <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <span>₹15 Sachet Quota Used</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <div className="text-[10px] text-slate-400">Recommended micro-dose packet • Validated scan</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-[10px] font-bold">
+                      ₹0 Extra Charged
+                    </span>
                   </div>
                 </div>
 
-                {/* Advice Card 2: Caution & Spore Spread Management */}
-                <div className="p-3 rounded-xl bg-slate-950/80 border border-amber-500/20 flex items-start gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 border border-amber-500/30">
-                    <AlertTriangle className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-white">महत्त्वाची दक्षता (Immediate Caution)</span>
-                      <span className="px-2 py-0.2 rounded-full bg-amber-500/20 text-amber-300 font-bold text-[10px]">सावध राहा</span>
-                    </div>
-                    <p className="text-xs text-slate-200 mt-1">
-                      रासायनिक बुरशीनाशक घाईघाईत फवारू नका. पुढील ४८ तास रोगाचा प्रसार (spore spread) निरीक्षण करा.
-                    </p>
-                    <span className="text-[10px] text-slate-400 block mt-1">Wait for verification before applying synthetic chemicals.</span>
+                {/* Critical Caution: DO NOT SPRAY EXPENSIVE CHEMICALS (डू नॉट स्प्रे महागडी रसायने) */}
+                <div className="bg-rose-950/40 text-rose-200 p-3 rounded-xl border border-rose-500/30 border-l-4 border-l-rose-500 flex gap-2.5 items-start">
+                  <span className="text-rose-400 text-lg shrink-0 mt-0.5 font-bold">🛑</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-black text-rose-300 uppercase tracking-wide">
+                      डू नॉट स्प्रे महागडी रसायने (Do Not Spray Heavy Chemicals)
+                    </span>
+                    <span className="text-[11px] text-rose-200/90 mt-0.5 leading-relaxed">
+                      Avoid heavy broad-spectrum chemicals immediately. They destroy friendly predatory mites and increase leaf scorch risk under current high humidity.
+                    </span>
                   </div>
                 </div>
 
-                {/* Advice Card 3: Regional Weather Sync Advisory */}
-                <div className="p-3 rounded-xl bg-slate-950/80 border border-blue-500/20 flex items-start gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5 border border-blue-500/30">
-                    <CloudSun className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-white">हवामान सल्ला (Weather Sync)</span>
-                      <span className="text-[10px] text-blue-400 font-mono">अकोला रडार</span>
+                {/* Safe IPM Numbered Protocol Steps (cultivai_ai_diagnosis_report) */}
+                <div className="space-y-2">
+                  {/* Step 1: 5% NSKE Spray */}
+                  <div className="flex items-start gap-2.5 bg-slate-950/80 border border-emerald-500/20 p-2.5 rounded-xl">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 text-[10px] font-black">
+                      1
                     </div>
-                    <p className="text-xs text-slate-200 mt-1">
-                      पुढील ६ तासांत पावसाची ६०% शक्यता आहे. आकाश स्वच्छ झाल्यावरच फवारणीचे नियोजन करावे.
-                    </p>
-                    <span className="text-[10px] text-slate-400 block mt-1">Prevents chemical runoff wash-off into irrigation furrows.</span>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <span>५% निंबोळी अर्क (5% NSKE Spray)</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-normal">Neem Extract</span>
+                      </h4>
+                      <p className="text-[11px] text-slate-300 mt-0.5 leading-relaxed">
+                        Apply uniform foliar mist during early morning hours (५० मिली प्रति १५L पंप) to disrupt fungal spore germination safely.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2: 3-Foot Row Drainage Trenching */}
+                  <div className="flex items-start gap-2.5 bg-slate-950/80 border border-blue-500/20 p-2.5 rounded-xl">
+                    <div className="w-5 h-5 rounded-full bg-blue-500 text-slate-950 flex items-center justify-center shrink-0 text-[10px] font-black">
+                      2
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <span>३-फूट चर निचरा (3-Foot Drainage Trenching)</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 font-normal">Soil Aeration</span>
+                      </h4>
+                      <p className="text-[11px] text-slate-300 mt-0.5 leading-relaxed">
+                        Clear excess water channels between plant rows to reduce root-zone humidity and halt spore incubation.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Marathi Audio Playback Bar & Specialist Escalation Footer */}
-            <div className="pt-2 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-              {/* Audio Playback Pill */}
+            {/* Action Bar from cultivai_ai_diagnosis_report */}
+            <div className="pt-3 border-t border-slate-800 flex flex-col gap-2.5">
+              {/* Primary: Ask CultivAI Assistant for Clarification */}
               <button
-                onClick={handleToggleAudio}
-                className={`w-full sm:w-auto px-4 py-2 rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer ${
-                  isPlayingAudio
-                    ? 'bg-amber-500 text-slate-950'
-                    : 'bg-emerald-600 hover:bg-emerald-500 text-slate-950'
-                }`}
+                onClick={() => {
+                  if (onOpenCaseChat) onOpenCaseChat('obs_seed_104_1', selectedFieldId);
+                }}
+                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition-all cursor-pointer active:scale-[0.99]"
               >
-                {isPlayingAudio ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                <span>{isPlayingAudio ? 'ऑडिओ थांबवा (Pause Audio)' : 'मराठीत ऑडिओ ऐका (Listen in Marathi)'}</span>
-                <span className="px-2 py-0.5 rounded-full bg-slate-950/20 font-mono text-[10px]">
-                  {isPlayingAudio ? `${audioProgress}%` : '1:12 Min'}
-                </span>
+                <MessageSquare className="w-4 h-4 fill-current" />
+                <span>Ask CultivAI Assistant for Clarification 💬</span>
               </button>
 
-              {/* Secondary Actions: Export & Send to Extension Officer */}
-              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+              {/* Sub-Actions: Audio + Send to Expert + Share via WhatsApp */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                {/* Audio Button */}
                 <button
-                  onClick={handleShareWhatsApp}
-                  className="flex-1 sm:flex-initial px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-colors cursor-pointer"
+                  onClick={handleToggleAudio}
+                  className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
+                    isPlayingAudio
+                      ? 'bg-amber-500/20 border-amber-500 text-amber-300'
+                      : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700'
+                  }`}
                 >
-                  <Share2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>WhatsApp शेअर्स</span>
+                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
+                  <span className="truncate">{isPlayingAudio ? 'थांबवा' : 'मराठीत ऑडिओ'}</span>
+                  <span className="text-[10px] text-slate-400 font-mono">
+                    {isPlayingAudio ? `${audioProgress}%` : '1:12m'}
+                  </span>
                 </button>
+
+                {/* Send to Expert */}
                 <button
                   onClick={() => {
                     if (onOpenCaseChat) onOpenCaseChat('obs_seed_104_1', selectedFieldId);
                   }}
-                  className="flex-1 sm:flex-initial px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-colors cursor-pointer"
+                  className="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-teal-400" />
-                  <span>कृषी सहाय्यक</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                  <span>Send to Expert</span>
+                </button>
+
+                {/* Share via WhatsApp */}
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="py-2 px-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 shadow transition-all cursor-pointer active:scale-[0.98]"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>Share via WA</span>
                 </button>
               </div>
             </div>
