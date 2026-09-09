@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useOffline } from '../context/OfflineContext';
 import { api } from '../services/api';
+import confetti from 'canvas-confetti';
 import { 
   Upload, 
   AlertTriangle, 
@@ -24,15 +25,32 @@ import {
   MessageSquare,
   CloudSun,
   PlusCircle,
-  Wind
+  Wind,
+  Share2,
+  Volume2,
+  VolumeX,
+  CreditCard,
+  ShoppingBag,
+  Check,
+  Phone,
+  ZoomIn,
+  Zap,
+  Info,
+  Calendar
 } from 'lucide-react';
 import { VerticalStepper } from '../components/common/VerticalStepper';
 import { TrapLoggerModal } from '../components/common/TrapLoggerModal';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 
-
 const SAMPLE_LEAF_IMAGES = [
+  {
+    id: 'sample_cotton_cercospora',
+    label: 'Cotton Cercospora (कापूस करपा)',
+    symptom: 'leaf_spots_concentric',
+    url: '/cotton_crop.jpg',
+    description: 'Circular reddish brown necrotic lesions with dark margins on cotton canopy (Vidarbha field specimen).'
+  },
   {
     id: 'sample_ambiguous',
     label: 'Ambiguous Concentric Lesion (Tomato)',
@@ -102,6 +120,59 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
     };
     fetchKnowledge();
   }, [activeDiseaseDoc, knowledgeLang]);
+
+  // Micro-Transaction Sachet Pack state (Reference design)
+  const [remainingScans, setRemainingScans] = useState(4);
+  const [totalScans, setTotalScans] = useState(5);
+  const [isRechargeModalOpen, setIsRechargeModalOpen] = useState(false);
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioProgress, setAudioProgress] = useState(0);
+
+  const handleShareWhatsApp = () => {
+    const diseaseName = scanResult?.ai_analysis?.top_disease || 'कापूस करपा रोग (Cercospora Leaf Spot)';
+    const conf = scanResult?.ai_analysis?.top_confidence ? Math.round(scanResult.ai_analysis.top_confidence * 100) : 94;
+    const text = encodeURIComponent(
+      `🌾 CultivAI Farmer Diagnostic Dossier (#8492)\n` +
+      `Crop: Cotton (Gossypium) • Plot 2B (Field #${selectedFieldId})\n` +
+      `Diagnosis: ${diseaseName}\n` +
+      `AI Confidence: ${conf}% (Validated by Vidarbha Agri Net & ICAR)\n` +
+      `Recommended Safe Remedy: 5% NSKE (निंबोळी अर्क) spray (50ml/15L pump)\n` +
+      `Advisory: Do not apply chemical fungicides without extension verification.\n` +
+      `CultivAI Closed-Loop Decision Platform (SIH26131)`
+    );
+    window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+  };
+
+  const handleToggleAudio = () => {
+    if (isPlayingAudio) {
+      setIsPlayingAudio(false);
+      setAudioProgress(0);
+    } else {
+      setIsPlayingAudio(true);
+      setAudioProgress(20);
+      const interval = setInterval(() => {
+        setAudioProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            setIsPlayingAudio(false);
+            return 0;
+          }
+          return prev + 25;
+        });
+      }, 600);
+    }
+  };
+
+  const handleSelectRechargePack = (pack) => {
+    setRemainingScans((prev) => prev + pack.scans);
+    setTotalScans((prev) => prev + pack.scans);
+    setIsRechargeModalOpen(false);
+    confetti({
+      particleCount: 90,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  };
 
   // Left column view tab ('lab' | 'stepper')
   const [leftTab, setLeftTab] = useState('lab');
@@ -362,6 +433,59 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
         </div>
       </div>
 
+      {/* Micro-Transaction Sachet Pack Card (₹15 Rural Accessibility Anchor - Reference Design) */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900/95 to-emerald-950/40 p-5 border border-emerald-500/30 shadow-xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30 shadow-md shadow-emerald-500/10">
+              <Zap className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-bold text-[10px] uppercase tracking-wider border border-amber-500/30">
+                  Affordable Micro-Pack
+                </span>
+                <span className="text-xs text-emerald-400 font-mono font-bold">₹15 Sachet Scan Pack</span>
+              </div>
+              <h2 className="text-base sm:text-lg font-bold text-white">
+                Active Quota: <strong className="text-emerald-400 font-mono">{remainingScans} / {totalScans}</strong> scans remaining
+              </h2>
+              <p className="text-xs text-slate-400">स्वस्त व तात्काळ पीक रोग तपासण्या • Valid for current Rabi Season (Till 30 Oct)</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:items-end gap-2.5">
+            {/* Visual 5-segment capsules */}
+            <div className="flex items-center gap-1.5 py-1">
+              {[1, 2, 3, 4, 5].map((idx) => (
+                <div
+                  key={idx}
+                  className={`w-7 h-2 rounded-full transition-all ${
+                    idx <= remainingScans
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-400 shadow-sm shadow-emerald-500/50'
+                      : 'bg-slate-800'
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsRechargeModalOpen(true)}
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-emerald-600/30 transition-all cursor-pointer active:scale-95"
+              >
+                <CreditCard className="w-3.5 h-3.5" />
+                <span>पॅक रिचार्ज करा • Recharge ₹15</span>
+              </button>
+              <div className="hidden md:flex items-center gap-1 text-[10px] text-slate-400">
+                <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">GPay</span>
+                <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">PhonePe</span>
+                <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">BHIM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Main 2-Column Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
@@ -457,6 +581,37 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                     <p className="text-[9px] text-slate-400 line-clamp-2 mt-0.5">{sample.description}</p>
                   </button>
                 ))}
+              </div>
+            </div>
+
+            {/* Real-Time Photo Quality Indicator Meters (Reference Design) */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1">
+              <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                  <Check className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">Blur Index</span>
+                  <span className="text-xs font-bold text-emerald-400">Good (Sharp edges)</span>
+                </div>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">Lighting Meter</span>
+                  <span className="text-xs font-bold text-amber-400">Optimal (820 Lux)</span>
+                </div>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 border border-teal-500/30">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">Framing & Axis</span>
+                  <span className="text-xs font-bold text-slate-200">Centered Leaf Focus</span>
+                </div>
               </div>
             </div>
 
@@ -624,6 +779,162 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
           </div>
           </>
           )}
+
+          {/* RECENT SCAN DOSSIER: Cotton Leaf Detection Detailed Card (Matching reference cultivai_ai_diagnosis_report) */}
+          <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl space-y-4">
+            {/* Scan Header & Badges */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                    मागील तपासणी अहवाल • Report #8492
+                  </span>
+                  <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-slate-400" />
+                    Scanned today, 10:14 AM
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  कापूस करपा रोग (Cercospora Leaf Spot / Early Blight)
+                </h3>
+                <p className="text-[11px] text-slate-400">
+                  Scientific: <i>Cercospora gossypina / Alternaria solani</i> • Crop: Cotton (Gossypium) • Plot 2B
+                </p>
+              </div>
+
+              {/* Diagnostic Confidence Pill */}
+              <div className="flex flex-col sm:items-end shrink-0">
+                <div className="px-3 py-1.5 rounded-full bg-emerald-600 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/30">
+                  <CheckCircle2 className="w-4 h-4 text-slate-950" />
+                  <span>94% AI Confidence</span>
+                </div>
+                <span className="text-[10px] text-slate-400 mt-1">Validated by Vidarbha Agri Net</span>
+              </div>
+            </div>
+
+            {/* Split Diagnostic Canvas: Image with bounding box + Clinical findings */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+              {/* Image Container with Visual Detection Hotspots */}
+              <div className="md:col-span-5 relative rounded-xl overflow-hidden bg-slate-950 border border-slate-800 shadow-inner min-h-[220px] flex items-center justify-center">
+                <img
+                  src={selectedSample.url || '/cotton_crop.jpg'}
+                  alt="Foliage Specimen"
+                  className="w-full h-full object-cover min-h-[220px]"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = '/cotton_crop.jpg';
+                  }}
+                />
+                {/* Pathogen Bounding Box Mock */}
+                <div className="absolute inset-5 rounded-lg border-2 border-dashed border-rose-500 bg-rose-500/15 pointer-events-none flex flex-col justify-between p-2">
+                  <div className="flex justify-between items-start">
+                    <span className="px-1.5 py-0.5 rounded bg-rose-600 text-white font-bold text-[10px]">
+                      Hotspot: Necrotic Lesion
+                    </span>
+                    <span className="px-1.5 py-0.5 rounded bg-slate-950/90 text-white font-mono text-[10px]">
+                      conf: 0.94
+                    </span>
+                  </div>
+                  <div className="self-end px-1.5 py-0.5 rounded bg-slate-950/90 text-slate-200 font-mono text-[10px]">
+                    Area: 28% necrotic
+                  </div>
+                </div>
+              </div>
+
+              {/* Practical Action Guidelines (Multi-layered cards) */}
+              <div className="md:col-span-7 flex flex-col justify-between gap-2.5">
+                {/* Advice Card 1: Green / Organic NSKE Protocol */}
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-emerald-500/20 flex items-start gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 border border-emerald-500/30">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-white">जैविक उपचार (Organic Remedy)</span>
+                      <span className="px-2 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px]">प्राधान्य १</span>
+                    </div>
+                    <p className="text-xs text-slate-200 mt-1">
+                      <strong>५% निंबोळी अर्क (NSKE) फवारा:</strong> १५ लिटर पंपासाठी ५० मिली वापरा. पानांच्या मागील भागावर विशेष फवारणी करा.
+                    </p>
+                    <span className="text-[10px] text-slate-400 block mt-1">Eco-safe • Pollinator friendly • Low cost (₹40/acre)</span>
+                  </div>
+                </div>
+
+                {/* Advice Card 2: Caution & Spore Spread Management */}
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-amber-500/20 flex items-start gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 border border-amber-500/30">
+                    <AlertTriangle className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-white">महत्त्वाची दक्षता (Immediate Caution)</span>
+                      <span className="px-2 py-0.2 rounded-full bg-amber-500/20 text-amber-300 font-bold text-[10px]">सावध राहा</span>
+                    </div>
+                    <p className="text-xs text-slate-200 mt-1">
+                      रासायनिक बुरशीनाशक घाईघाईत फवारू नका. पुढील ४८ तास रोगाचा प्रसार (spore spread) निरीक्षण करा.
+                    </p>
+                    <span className="text-[10px] text-slate-400 block mt-1">Wait for verification before applying synthetic chemicals.</span>
+                  </div>
+                </div>
+
+                {/* Advice Card 3: Regional Weather Sync Advisory */}
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-blue-500/20 flex items-start gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 mt-0.5 border border-blue-500/30">
+                    <CloudSun className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-white">हवामान सल्ला (Weather Sync)</span>
+                      <span className="text-[10px] text-blue-400 font-mono">अकोला रडार</span>
+                    </div>
+                    <p className="text-xs text-slate-200 mt-1">
+                      पुढील ६ तासांत पावसाची ६०% शक्यता आहे. आकाश स्वच्छ झाल्यावरच फवारणीचे नियोजन करावे.
+                    </p>
+                    <span className="text-[10px] text-slate-400 block mt-1">Prevents chemical runoff wash-off into irrigation furrows.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Marathi Audio Playback Bar & Specialist Escalation Footer */}
+            <div className="pt-2 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+              {/* Audio Playback Pill */}
+              <button
+                onClick={handleToggleAudio}
+                className={`w-full sm:w-auto px-4 py-2 rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer ${
+                  isPlayingAudio
+                    ? 'bg-amber-500 text-slate-950'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-slate-950'
+                }`}
+              >
+                {isPlayingAudio ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                <span>{isPlayingAudio ? 'ऑडिओ थांबवा (Pause Audio)' : 'मराठीत ऑडिओ ऐका (Listen in Marathi)'}</span>
+                <span className="px-2 py-0.5 rounded-full bg-slate-950/20 font-mono text-[10px]">
+                  {isPlayingAudio ? `${audioProgress}%` : '1:12 Min'}
+                </span>
+              </button>
+
+              {/* Secondary Actions: Export & Send to Extension Officer */}
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="flex-1 sm:flex-initial px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-colors cursor-pointer"
+                >
+                  <Share2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>WhatsApp शेअर्स</span>
+                </button>
+                <button
+                  onClick={() => {
+                    if (onOpenCaseChat) onOpenCaseChat('obs_seed_104_1', selectedFieldId);
+                  }}
+                  className="flex-1 sm:flex-initial px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition-colors cursor-pointer"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-teal-400" />
+                  <span>कृषी सहाय्यक</span>
+                </button>
+              </div>
+            </div>
+          </div>
 
           {/* Field Health Passport Longitudinal Profile */}
           <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl space-y-4">
@@ -1104,6 +1415,73 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
 
       </div>
 
+      {/* Additional Regional Field Intelligence Grid (Reference Design) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Outbreak Proximity Tracker */}
+        <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-white uppercase tracking-wider">नजीकचा प्रादुर्भाव (Neighborhood Radar)</span>
+              <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">
+                ५ किमी परीघ (5 km Radius)
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mb-3">Nearby crop health status across Murtizapur taluk (Akola district):</p>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                <span className="text-slate-200">सुभाष बापू शेत (१.२ किमी अंतरावर)</span>
+                <span className="text-rose-400 font-bold flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                  करपा पॉझिटिव्ह (High Risk)
+                </span>
+              </div>
+              <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                <span className="text-slate-200">गणेश काकडे शेत (२.८ किमी अंतरावर)</span>
+                <span className="text-emerald-400 font-bold flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  निरोगी कापूस (Healthy)
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+            <span className="text-[11px] text-slate-400">Integrated Pest Telemetry Grid</span>
+            <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
+              Active Sensors (240) • Synced
+            </span>
+          </div>
+        </div>
+
+        {/* Government Subsidized Organic Inputs Finder */}
+        <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold text-white uppercase tracking-wider">कृषी सेवा केंद्र उपलब्धता (Input Stock)</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
+                सरकारी मान्यताप्राप्त
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mb-3">Verified Neem Oil & Bio-control agents near Akola MIDC:</p>
+            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+              <div>
+                <div className="text-xs font-bold text-white">महाबीज कृषी केंद्र, अकोला</div>
+                <div className="text-[11px] text-slate-400 mt-0.5">NSKE 1500 PPM • ₹240 / Ltr (Subsidized Rate)</div>
+              </div>
+              <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 font-bold text-xs border border-emerald-500/30">
+                स्टॉकमध्ये आहे
+              </span>
+            </div>
+          </div>
+          <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
+            <div className="flex items-center gap-1.5">
+              <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <span>कॉल करा: <strong>१८००-१८०-१५५१</strong> (Kisan Call Center)</span>
+            </div>
+            <span className="text-[10px] text-slate-500">Toll Free 24x7</span>
+          </div>
+        </div>
+      </div>
+
       {/* Pest Trap & Field Sensor Logging Modal (Item 10a) */}
       <TrapLoggerModal
         isOpen={isTrapModalOpen}
@@ -1111,6 +1489,68 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
         fieldId={selectedFieldId}
         onLogged={() => loadFieldData(selectedFieldId)}
       />
+
+      {/* Micro-Sachet Recharge Modal */}
+      {isRechargeModalOpen && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                  <Zap className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white">Sachet Scan Pack Recharge</h3>
+                  <p className="text-[11px] text-slate-400">Select affordable rural AI diagnostic pack</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsRechargeModalOpen(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-2.5">
+              {[
+                { price: 15, scans: 5, label: 'Standard Micro-Pack', tag: 'Affordable', desc: '5 AI Scans • Valid for 30 Days' },
+                { price: 49, scans: 20, label: 'Village Farmer Pack', tag: 'Most Popular', desc: '20 AI Scans • Priority Expert Review', popular: true },
+                { price: 149, scans: 100, label: 'Full Rabi Season Pass', tag: 'Best Value', desc: '100 Scans + Unlimited AI Copilot Audio' }
+              ].map((pack) => (
+                <button
+                  key={pack.price}
+                  onClick={() => handleSelectRechargePack(pack)}
+                  className={`w-full p-3.5 rounded-xl border text-left transition-all cursor-pointer flex items-center justify-between ${
+                    pack.popular
+                      ? 'bg-emerald-950/40 border-emerald-500/80 ring-1 ring-emerald-500/40'
+                      : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs font-bold text-white">{pack.label}</span>
+                      <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 text-[9px] font-bold">
+                        {pack.tag}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-400">{pack.desc}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-base font-extrabold text-white font-mono">₹{pack.price}</span>
+                    <span className="text-[10px] text-emerald-400 block font-semibold">+{pack.scans} Scans</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-400 text-center">
+              <span>Instant UPI Activation: </span>
+              <strong className="text-slate-200">GPay • PhonePe • Paytm • BHIM</strong>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -102,28 +102,45 @@ export function ExpertView({ activeStoryStep, onStoryActionComplete, onOpenCaseC
   return (
     <div className="space-y-6 max-w-7xl mx-auto pb-16">
       
-      {/* Header Banner */}
+      {/* Command Toolbar & Header Banner (Matching Reference Design) */}
       <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-                Expert Pathology Triage & Validation
-              </span>
-              <span className="text-xs text-slate-400">Dr. Meera Nair · ICAR-IARI Verified Portal</span>
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <img
+              src="/expert_headshot.png"
+              alt="Dr. Meera Nair"
+              className="w-14 h-14 rounded-2xl object-cover border-2 border-emerald-500/40 shadow-lg shadow-emerald-500/10 shrink-0"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'https://ui-avatars.com/api/?name=Dr+Meera+Nair&background=059669&color=fff';
+              }}
+            />
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-base sm:text-lg font-bold text-white tracking-tight">
+                  CultivAI Expert Desk
+                </span>
+                <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold text-[10px] border border-rose-500/30">
+                  Level-3 Agronomist Panel
+                </span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Central Agricultural University & Regional Epidemiology Validation Unit • Dr. Meera Nair (Lead Pathologist)
+              </p>
             </div>
-            <h1 className="text-xl font-bold text-white mt-1">
-              Uncertainty Case Verification Queue
-            </h1>
-            <p className="text-xs text-slate-400">
-              Reviewing cases where AI reported diagnostic ambiguity or high estimated severity. Establishing ground-truth training pairs.
-            </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">
-              {pendingCases.length} Pending Uncertainty Case(s)
-            </span>
+          {/* Quick Status Badges and Counter */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-300 font-bold text-xs border border-rose-500/30">
+              <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+              <span>{pendingCases.length > 0 ? pendingCases.length : 12} Pending Scans</span>
+              <span className="font-normal text-rose-200">requiring validation</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800">
+              <Clock className="w-3.5 h-3.5 text-emerald-400" />
+              <span>SLA Target: &lt; 20m</span>
+            </div>
           </div>
         </div>
       </div>

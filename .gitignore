@@ -39,3 +39,13 @@ temp_sih_repo/
 .idea/
 .DS_Store
 Thumbs.db
+
+# JDK & Android Build
+jdk-*/
+*.apk
+*.aab
+*.zip
+.gradle/
+.gradle_cache/
+test_*.cjs
+verify_*.cjs

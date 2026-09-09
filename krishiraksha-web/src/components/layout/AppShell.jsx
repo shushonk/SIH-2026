@@ -77,12 +77,17 @@ export function AppShell({
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 ring-1 ring-emerald-400/30">
-              <Sprout className="w-6 h-6 text-slate-950" />
-            </div>
+            <img 
+              src="/cultivai_logo.png" 
+              alt="CultivAI Logo" 
+              className="w-10 h-10 rounded-xl object-contain bg-emerald-950/40 p-1 border border-emerald-500/30 shadow-lg shadow-emerald-500/20"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-base font-black tracking-tight text-white">
+                <span className="text-base font-black tracking-tight text-white font-sans">
                   Cultiv<span className="text-emerald-400">AI</span>
                 </span>
                 <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -228,6 +233,26 @@ export function AppShell({
             </div>
           </div>
 
+          {/* Center: Top Quick Role Navigation Pills (Matching Reference Design) */}
+          <nav className="hidden xl:flex items-center gap-1 p-1 bg-slate-950/80 rounded-xl border border-slate-800">
+            {roleNavItems.map((item) => {
+              const isActive = role === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-emerald-600 text-slate-950 shadow-md shadow-emerald-600/30 font-bold'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+
           {/* Right: Quick Action Controls */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             
@@ -353,6 +378,30 @@ export function AppShell({
             </div>
           </div>
         )}
+
+        {/* Top Regional Agromet Alert Ticker (Matching Reference Design) */}
+        <div className="bg-gradient-to-r from-amber-950/40 via-slate-900 to-amber-950/30 border-b border-amber-500/20 px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs shadow-sm">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
+            <span className="font-bold text-amber-300 truncate">
+              अकोला विभाग: कापूस करपा सतर्कता
+            </span>
+            <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30 text-[10px] shrink-0">
+              उच्च जोखीम (High Risk)
+            </span>
+            <span className="text-slate-300 hidden md:inline text-[11px] truncate">
+              Akola Agromet Advisory: High relative humidity (84%) triggering fungal incubation in Gossypium hirsutum.
+            </span>
+          </div>
+          <div className="flex items-center gap-3 text-[11px] text-slate-300 ml-auto shrink-0">
+            <span className="hidden sm:inline">
+              स्थानिक हवामान: <strong className="text-white">28°C</strong> • आर्द्रता <strong className="text-white">84%</strong> • वारा <strong className="text-white">12 km/h</strong>
+            </span>
+            <span className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[10px]">
+              Radar Live
+            </span>
+          </div>
+        </div>
 
         {/* 3. UNIFORM MAIN CONTENT CONTAINER */}
         <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
