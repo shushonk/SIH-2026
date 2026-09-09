@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -14,7 +14,8 @@ const ONBOARDING_KEY = '@krishiraksha_onboarding_completed';
 
 const MainApp = () => {
   const { isDark, theme } = useTheme();
-  const [hasOnboarded, setHasOnboarded] = useState(null);
+  // On web, default directly to main dashboard for instant preview
+  const [hasOnboarded, setHasOnboarded] = useState(true);
 
   useEffect(() => {
     checkOnboarding();
@@ -23,7 +24,11 @@ const MainApp = () => {
   const checkOnboarding = async () => {
     try {
       const val = await AsyncStorage.getItem(ONBOARDING_KEY);
-      setHasOnboarded(val === 'true');
+      if (val === 'false') {
+        setHasOnboarded(false);
+      } else {
+        setHasOnboarded(true);
+      }
     } catch (e) {
       setHasOnboarded(true);
     }
@@ -38,14 +43,6 @@ const MainApp = () => {
     }
   };
 
-  if (hasOnboarded === null) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: theme.colors.background }}>
-        <ActivityIndicator size="large" color={theme.colors.primary} />
-      </View>
-    );
-  }
-
   return (
     <>
       <StatusBar style={isDark ? 'light' : 'dark'} />
@@ -59,8 +56,13 @@ const MainApp = () => {
 };
 
 export default function App() {
+  const defaultMetrics = initialWindowMetrics || {
+    frame: { x: 0, y: 0, width: 1280, height: 800 },
+    insets: { top: 0, left: 0, right: 0, bottom: 0 },
+  };
+
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialMetrics={defaultMetrics}>
       <ThemeProvider>
         <LanguageProvider>
           <AuthProvider>
