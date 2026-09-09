@@ -1,0 +1,8 @@
+{
+  "appId": "com.krishiraksha.app",
+  "appName": "KrishiRaksha",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

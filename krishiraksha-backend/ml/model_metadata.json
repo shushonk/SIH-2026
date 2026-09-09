@@ -1,0 +1,98 @@
+{
+  "test_accuracy": 0.9833333333333333,
+  "classes": [
+    "Early Blight",
+    "Healthy",
+    "Leaf Mold",
+    "Septoria Leaf Spot",
+    "Target Spot"
+  ],
+  "n_train": 1200,
+  "n_test": 300,
+  "per_class_report": {
+    "Early Blight": {
+      "precision": 0.9516129032258065,
+      "recall": 0.9833333333333333,
+      "f1-score": 0.9672131147540983,
+      "support": 60.0
+    },
+    "Healthy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 60.0
+    },
+    "Leaf Mold": {
+      "precision": 1.0,
+      "recall": 0.9833333333333333,
+      "f1-score": 0.9915966386554622,
+      "support": 60.0
+    },
+    "Septoria Leaf Spot": {
+      "precision": 0.9672131147540983,
+      "recall": 0.9833333333333333,
+      "f1-score": 0.9752066115702479,
+      "support": 60.0
+    },
+    "Target Spot": {
+      "precision": 1.0,
+      "recall": 0.9666666666666667,
+      "f1-score": 0.9830508474576272,
+      "support": 60.0
+    },
+    "accuracy": 0.9833333333333333,
+    "macro avg": {
+      "precision": 0.983765203595981,
+      "recall": 0.9833333333333334,
+      "f1-score": 0.9834134424874872,
+      "support": 300.0
+    },
+    "weighted avg": {
+      "precision": 0.9837652035959809,
+      "recall": 0.9833333333333333,
+      "f1-score": 0.9834134424874871,
+      "support": 300.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      59,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      60,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      59,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      59,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      58
+    ]
+  ],
+  "training_time_seconds": 35.4,
+  "dataset_source": "https://github.com/spMohanty/PlantVillage-Dataset",
+  "feature_pipeline": "HSV color histograms + GLCM texture + Canny edge density (classical CV, not deep learning)",
+  "images_per_class_used": 300
+}

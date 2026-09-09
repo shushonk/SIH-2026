@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "KrishiRaksha",
+    "slug": "krishiraksha",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#059669"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.krishiraksha.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#059669"
+      },
+      "package": "org.krishiraksha.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to allow scanning crop leaves for disease diagnosis.",
+          "cameraPermission": "The app accesses your camera to scan crop leaves in real-time."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "krishiraksha-sih26131"
+      }
+    }
+  }
+}

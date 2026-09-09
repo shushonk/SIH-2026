@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KrishiRaksha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <h1>KrishiRaksha<span class="brand-dot">.</span></h1>
+      <p>Closed-loop agricultural decision support — live demo, calling a real backend.</p>
+      <div class="api-status" id="api-status">Checking backend connection…</div>
+    </div>
+    <div class="role-switch">
+      <button class="role-btn active" data-role="Farmer">Farmer</button>
+      <button class="role-btn" data-role="Expert">Expert</button>
+      <button class="role-btn" data-role="Officer">Officer</button>
+      <span class="role-indicator" id="role-indicator"></span>
+    </div>
+  </header>
+  <div id="view-root"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

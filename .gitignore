@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Expo / Mobile build
+.expo/
+dist/
+web-build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+
+# Database & local state
+*.db
+*.sqlite
+*.sqlite3
+krishiraksha.db
+temp_sih_repo/
+
+# Environment files (keep examples)
+.env
+.env.local
+.env.*.local
+
+# Operating System & IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

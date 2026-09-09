@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+mongomock
+pydantic
+scikit-learn
+scikit-image
+joblib
+pillow
+numpy
