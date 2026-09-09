@@ -1,0 +1,10 @@
+{
+  "name": "krishiraksha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KrishiRaksha (कृषिरक्षा) — SIH26131 Closed-Loop AI Plant Health Decision Support System",
+  "scripts": {
+    "build": "cd krishiraksha-web && npm install && npm run build",
+    "build:mobile": "cd krishiraksha-mobile && npm install && npx expo export -p web"
+  }
+}

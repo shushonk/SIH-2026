@@ -1,9 +1,21 @@
 # KrishiRaksha — AI-Powered Closed-Loop Agricultural Decision-Support Platform
 **Smart India Hackathon 2024 · Problem Statement ID: SIH26131**
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshushonk%2FSIH-2026&project-name=krishiraksha&root-directory=krishiraksha-web)
+
 > **Core Product Differentiator**: KrishiRaksha is **not** a simple "upload photo, get disease name" single-shot classifier. It is a **closed-loop clinical decision-support architecture** engineered around uncertain AI observations:
 > 
 > $$\textbf{Observe} \longrightarrow \textbf{Investigate} \longrightarrow \textbf{Verify} \longrightarrow \textbf{Assess} \longrightarrow \textbf{Prioritize} \longrightarrow \textbf{Act} \longrightarrow \textbf{Monitor} \longrightarrow \textbf{Learn}$$
+
+---
+
+## ⚡ Instant Cloud Deployment (Vercel)
+
+Click the **Deploy with Vercel** button above or follow these 2 steps:
+
+1. Import your GitHub repository `https://github.com/shushonk/SIH-2026` in the [Vercel Dashboard](https://vercel.com/new).
+2. Set **Root Directory** to `krishiraksha-web` (or leave it at `./` with the automated root `vercel.json` and `package.json` included in this repo).
+3. Click **Deploy** — your live web application will be live at `https://<your-project>.vercel.app` in under 60 seconds!
 
 ---
 
