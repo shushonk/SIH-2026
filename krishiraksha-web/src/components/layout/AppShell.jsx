@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
+import { useLanguage } from '../../i18n/LanguageContext';
 
 export function AppShell({ 
   children, 
@@ -31,12 +32,13 @@ export function AppShell({
   onOpenCopilot, 
   onOpenStoryline, 
   onOpenCaseChat,
-  currentLanguage = 'en',
+  currentLanguage: propLanguage,
   onLanguageChange,
   activeStoryStep = 1 
 }) {
   const { user, role, switchRole, logout } = useAuth();
   const { isOffline, setIsOffline, queue, setShowSyncModal } = useOffline();
+  const { language, setLanguage, t, languages } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
 
@@ -57,10 +59,10 @@ export function AppShell({
   }, []);
 
   const roleNavItems = [
-    { id: 'Farmer', label: 'Farmer Portal', icon: Sprout, description: 'Plot Passport & Scan Lab' },
-    { id: 'Expert', label: 'Expert Verification', icon: Stethoscope, description: 'Uncertainty Triage & Ground Truth' },
-    { id: 'Officer', label: 'Officer Hotspot Map', icon: ShieldAlert, description: 'Clusters & Inspection Queue' },
-    { id: 'Admin', label: 'Admin Console', icon: SlidersHorizontal, description: 'Model Metrics & Audit Trail' },
+    { id: 'Farmer', label: t('nav_farmer_portal'), icon: Sprout, description: t('farmer_1click_sub') },
+    { id: 'Expert', label: t('nav_expert_desk'), icon: Stethoscope, description: t('expert_desk_subtitle') },
+    { id: 'Officer', label: t('nav_district_map'), icon: ShieldAlert, description: t('gis_cmd_title') },
+    { id: 'Admin', label: t('nav_admin_console'), icon: SlidersHorizontal, description: 'Model Metrics & Audit Trail' },
   ];
 
   const handleNavClick = (r) => {
@@ -290,14 +292,16 @@ export function AppShell({
             <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-slate-950/80 border border-slate-800 text-[11px]">
               <Languages className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <select
-                value={currentLanguage}
-                onChange={(e) => onLanguageChange && onLanguageChange(e.target.value)}
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
                 className="bg-transparent text-slate-200 font-semibold focus:outline-none cursor-pointer pr-1"
                 title="Select Interface Language"
               >
-                <option value="en" className="bg-slate-900 text-white">English (EN)</option>
-                <option value="hi" className="bg-slate-900 text-white">हिंदी (Hindi)</option>
-                <option value="mr" className="bg-slate-900 text-white">मराठी (Marathi)</option>
+                {languages.map(lang => (
+                  <option key={lang.code} value={lang.code} className="bg-slate-900 text-white">
+                    {lang.nativeName} ({lang.code.toUpperCase()})
+                  </option>
+                ))}
               </select>
             </div>
 

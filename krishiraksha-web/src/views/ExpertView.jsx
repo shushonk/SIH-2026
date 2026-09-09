@@ -16,8 +16,10 @@ import {
   MessageSquare,
   Clock
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export function ExpertView({ activeStoryStep, onStoryActionComplete, onOpenCaseChat }) {
+  const { t } = useLanguage();
   const [pendingCases, setPendingCases] = useState([]);
   const [selectedCase, setSelectedCase] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -119,10 +121,10 @@ export function ExpertView({ activeStoryStep, onStoryActionComplete, onOpenCaseC
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-base sm:text-lg font-bold text-white tracking-tight">
-                  CultivAI Expert Desk
+                  {t('expert_desk_title')}
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold text-[10px] border border-rose-500/30">
-                  Level-3 Agronomist Panel
+                  {t('expert_desk_subtitle')}
                 </span>
               </div>
               <p className="text-xs text-slate-400">
@@ -140,7 +142,7 @@ export function ExpertView({ activeStoryStep, onStoryActionComplete, onOpenCaseC
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-slate-300 font-mono text-xs border border-slate-800">
               <Clock className="w-3.5 h-3.5 text-emerald-400" />
-              <span>SLA Target: &lt; 20m</span>
+              <span>{t('sla_target')}</span>
             </div>
           </div>
         </div>

@@ -26,6 +26,7 @@ import {
   IndianRupee,
   Smartphone
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const NATIONWIDE_CLUSTERS = [
   {
@@ -257,6 +258,7 @@ function ContainmentRing({ percentage = 71 }) {
 }
 
 export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
+  const { t } = useLanguage();
   const [priorityQueue, setPriorityQueue] = useState([]);
   const [mapData, setMapData] = useState(null);
   const [clusterData, setClusterData] = useState(null);
@@ -316,10 +318,10 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
 
       L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-      // Ultra-dark CartoDB Dark Matter tiles matching the user blueprint
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        maxZoom: 18,
-        subdomains: 'abcd',
+      // Clean Dark Canvas tiles (Zero API key required, zero watermark)
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 16,
+        attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
       }).addTo(map);
 
       mapInstanceRef.current = map;
@@ -481,7 +483,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
             <span className="text-sm font-extrabold text-white tracking-wide uppercase font-sans">
-              CultivAI GIS Outbreak Command
+              {t('gis_cmd_title')}
             </span>
           </div>
 
@@ -489,7 +491,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
             <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Search Maharashtra or District…"
+              placeholder={t('gis_search_placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-8 pr-3 py-1.5 text-xs bg-slate-950 border border-slate-700/80 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 w-48 sm:w-64"
@@ -510,7 +512,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            🇮🇳 India Heatmap
+            🇮🇳 {t('btn_national_view').replace('🇮🇳 ', '')}
           </button>
           <button
             onClick={() => {
@@ -523,7 +525,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            🎯 District Corridor ({selectedCluster.district})
+            🎯 {t('btn_district_view').replace('🎯 ', '')} ({selectedCluster.district})
           </button>
         </div>
 
@@ -534,11 +536,11 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
             className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-colors"
           >
             <Sliders className="w-3.5 h-3.5" />
-            <span>Simulate Microclimate</span>
+            <span>{t('btn_simulate_climate')}</span>
           </button>
           <div className="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1.5">
             <Flame className="w-3.5 h-3.5 text-rose-400" />
-            <span>139 Live Outbreaks Active</span>
+            <span>{t('live_outbreaks_badge')}</span>
           </div>
         </div>
       </div>
@@ -548,7 +550,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
         {/* Card 1: Total Scans Today */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between hover:border-emerald-500/50 transition-all group">
           <div className="flex items-start justify-between">
-            <span className="text-xs font-semibold text-slate-400">Total Scans Today</span>
+            <span className="text-xs font-semibold text-slate-400">{t('kpi_scans_today')}</span>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">
               <TrendingUp className="w-3 h-3" /> +12%
             </span>
@@ -562,14 +564,14 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
           </div>
           <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
             <Smartphone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-            <span className="truncate">Farmer App & Field Agents (+1,520 vs last week)</span>
+            <span className="truncate">{t('kpi_scans_today_sub')}</span>
           </div>
         </div>
 
         {/* Card 2: Active High-Risk Clusters */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between hover:border-rose-500/50 transition-all group">
           <div className="flex items-start justify-between">
-            <span className="text-xs font-semibold text-slate-400">Active High-Risk Clusters</span>
+            <span className="text-xs font-semibold text-slate-400">{t('kpi_active_clusters')}</span>
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500" />
@@ -581,14 +583,14 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
           </div>
           <div className="flex items-center gap-1.5 text-rose-400 text-[11px]">
             <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-            <span className="truncate">Akola, Yavatmal & Jalna critical</span>
+            <span className="truncate">{t('kpi_clusters_sub')}</span>
           </div>
         </div>
 
         {/* Card 3: Chemical Spray Reduction */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between hover:border-teal-500/50 transition-all group">
           <div className="flex items-start justify-between">
-            <span className="text-xs font-semibold text-slate-400">Chemical Spray Reduction</span>
+            <span className="text-xs font-semibold text-slate-400">{t('kpi_spray_reduction')}</span>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-bold border border-teal-500/20">
               <Leaf className="w-3 h-3" /> Target -40%
             </span>
@@ -599,14 +601,14 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
           </div>
           <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
             <Activity className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-            <span className="truncate">Organic IPM & pheromone trap adoption up</span>
+            <span className="truncate">{t('kpi_spray_sub')}</span>
           </div>
         </div>
 
         {/* Card 4: Farmer Savings Generated */}
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between hover:border-amber-500/50 transition-all group">
           <div className="flex items-start justify-between">
-            <span className="text-xs font-semibold text-slate-400">Farmer Savings Generated</span>
+            <span className="text-xs font-semibold text-slate-400">{t('kpi_savings')}</span>
             <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">₹</span>
           </div>
           <div className="my-2 flex items-baseline justify-between">
@@ -615,7 +617,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
           </div>
           <div className="flex items-center gap-1.5 text-slate-400 text-[11px]">
             <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="truncate">84,000 hectares protected statewide</span>
+            <span className="truncate">{t('kpi_savings_sub')}</span>
           </div>
         </div>
       </div>
@@ -634,7 +636,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">
-                  NATIONAL THREAT RADAR
+                  {t('threat_radar_title')}
                 </span>
                 <div className="text-3xl font-black text-white mt-1 font-mono tracking-tight flex items-baseline gap-2">
                   139
@@ -732,7 +734,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
                   Topological GIS Vector Overlay
                 </span>
                 <span className="text-[10px] px-2 py-0.2 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-                  CartoDB Dark Matter
+                  ArcGIS Dark Canvas (Clean Vector)
                 </span>
               </div>
               <div className="flex items-center gap-2 text-[10px] text-slate-400">
@@ -892,7 +894,7 @@ export function OfficerView({ activeStoryStep, onStoryActionComplete }) {
               className="w-full py-2 px-3 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>{isLoggingIntervention ? 'Issuing Advisory…' : 'Dispatch Bio-Barrier Advisory'}</span>
+              <span>{isLoggingIntervention ? '…' : t('btn_log_intervention')}</span>
             </button>
             {interventionSuccess && (
               <div className="p-2 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-[10px] text-emerald-300">

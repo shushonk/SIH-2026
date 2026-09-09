@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { AuthProvider } from './context/AuthContext';
 import { OfflineProvider } from './context/OfflineContext';
+import { LanguageProvider } from './i18n/LanguageContext';
 import './index.css';
 
 class ErrorBoundary extends React.Component {
@@ -45,11 +46,13 @@ class ErrorBoundary extends React.Component {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <AuthProvider>
-        <OfflineProvider>
-          <App />
-        </OfflineProvider>
-      </AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <OfflineProvider>
+            <App />
+          </OfflineProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );

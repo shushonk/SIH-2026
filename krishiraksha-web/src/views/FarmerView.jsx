@@ -42,6 +42,7 @@ import { VerticalStepper } from '../components/common/VerticalStepper';
 import { TrapLoggerModal } from '../components/common/TrapLoggerModal';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const SAMPLE_LEAF_IMAGES = [
   {
@@ -77,6 +78,7 @@ const SAMPLE_LEAF_IMAGES = [
 export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLanguage = 'en', onOpenCaseChat }) {
   const { selectedFieldId, setSelectedFieldId, fields } = useAuth();
   const { isOffline, queueScan } = useOffline();
+  const { t } = useLanguage();
 
   // Field details & Passport state
   const [passportData, setPassportData] = useState(null);
@@ -869,10 +871,10 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                   <span className="text-rose-400 text-lg shrink-0 mt-0.5 font-bold">🛑</span>
                   <div className="flex flex-col">
                     <span className="text-xs font-black text-rose-300 uppercase tracking-wide">
-                      डू नॉट स्प्रे महागडी रसायने (Do Not Spray Heavy Chemicals)
+                      {t('dossier_caution_title')}
                     </span>
                     <span className="text-[11px] text-rose-200/90 mt-0.5 leading-relaxed">
-                      Avoid heavy broad-spectrum chemicals immediately. They destroy friendly predatory mites and increase leaf scorch risk under current high humidity.
+                      {t('dossier_caution_desc')}
                     </span>
                   </div>
                 </div>
@@ -924,7 +926,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                 className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition-all cursor-pointer active:scale-[0.99]"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
-                <span>Ask CultivAI Assistant for Clarification 💬</span>
+                <span>{t('btn_ask_clarification')}</span>
               </button>
 
               {/* Sub-Actions: Audio + Send to Expert + Share via WhatsApp */}
@@ -939,7 +941,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                   }`}
                 >
                   {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
-                  <span className="truncate">{isPlayingAudio ? 'थांबवा' : 'मराठीत ऑडिओ'}</span>
+                  <span className="truncate">{isPlayingAudio ? t('btn_pause_audio') : t('btn_listen_audio')}</span>
                   <span className="text-[10px] text-slate-400 font-mono">
                     {isPlayingAudio ? `${audioProgress}%` : '1:12m'}
                   </span>
@@ -953,7 +955,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                   className="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
-                  <span>Send to Expert</span>
+                  <span>{t('btn_send_expert')}</span>
                 </button>
 
                 {/* Share via WhatsApp */}
@@ -962,7 +964,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                   className="py-2 px-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 shadow transition-all cursor-pointer active:scale-[0.98]"
                 >
                   <Share2 className="w-3.5 h-3.5" />
-                  <span>Share via WA</span>
+                  <span>{t('btn_share_wa')}</span>
                 </button>
               </div>
             </div>
@@ -1453,12 +1455,12 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
         <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-white uppercase tracking-wider">नजीकचा प्रादुर्भाव (Neighborhood Radar)</span>
+              <span className="text-xs font-bold text-white uppercase tracking-wider">{t('radar_title')}</span>
               <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">
                 ५ किमी परीघ (5 km Radius)
               </span>
             </div>
-            <p className="text-xs text-slate-400 mb-3">Nearby crop health status across Murtizapur taluk (Akola district):</p>
+            <p className="text-xs text-slate-400 mb-3">{t('radar_sub')}</p>
             <div className="space-y-2">
               <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
                 <span className="text-slate-200">सुभाष बापू शेत (१.२ किमी अंतरावर)</span>
@@ -1488,7 +1490,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
         <div className="glass-panel rounded-2xl p-5 border border-slate-800 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-white uppercase tracking-wider">कृषी सेवा केंद्र उपलब्धता (Input Stock)</span>
+              <span className="text-xs font-bold text-white uppercase tracking-wider">{t('inputs_title')}</span>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/30">
                 सरकारी मान्यताप्राप्त
               </span>
@@ -1507,7 +1509,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
           <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
             <div className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>कॉल करा: <strong>१८००-१८०-१५५१</strong> (Kisan Call Center)</span>
+              <span>{t('kisan_helpline')}</span>
             </div>
             <span className="text-[10px] text-slate-500">Toll Free 24x7</span>
           </div>
