@@ -13,7 +13,7 @@ export const translations = {
     tab_queue: 'Triage Queue',
 
     // App Header & Branding
-    app_name: 'KrishiRaksha',
+    app_name: 'CultivAI',
     app_tagline: 'AI Closed-Loop Crop Protection',
     live_badge: 'LIVE',
     offline_badge: 'Offline',
@@ -21,7 +21,7 @@ export const translations = {
     offline_banner: 'Offline — {{count}} scan(s) queued to sync',
 
     // Onboarding Walkthrough
-    onboard_title_1: 'Welcome to KrishiRaksha',
+    onboard_title_1: 'Welcome to CultivAI',
     onboard_desc_1: 'A closed-loop agricultural decision platform. Never just guess — observe, investigate, and protect.',
     onboard_title_2: 'Instant Leaf Scanning',
     onboard_desc_2: 'Scan affected leaves like a QR code. Get instant differential diagnosis with zero guesswork.',
@@ -174,7 +174,7 @@ export const translations = {
     tab_queue: 'समीक्षा कतार',
 
     // App Header & Branding
-    app_name: 'कृषि रक्षा',
+    app_name: 'CultivAI',
     app_tagline: 'एआई संचालित फसल सुरक्षा',
     live_badge: 'लाइव',
     offline_badge: 'ऑफ़लाइन',
@@ -182,7 +182,7 @@ export const translations = {
     offline_banner: 'ऑफ़लाइन — {{count}} स्कैन सिंक होने की प्रतीक्षा में',
 
     // Onboarding Walkthrough
-    onboard_title_1: 'कृषि रक्षा में आपका स्वागत है',
+    onboard_title_1: 'CultivAI में आपका स्वागत है',
     onboard_desc_1: 'फसल स्वास्थ्य का संपूर्ण समाधान। बिना अनुमान लगाए देखें, जांचें और सुरक्षित करें।',
     onboard_title_2: 'तुरंत पत्ती स्कैन करें',
     onboard_desc_2: 'क्यूआर कोड की तरह पत्ती स्कैन करें और सेकंडों में सही रोग पहचानें।',
@@ -335,15 +335,15 @@ export const translations = {
     tab_queue: 'तपासणी रांग',
 
     // App Header & Branding
-    app_name: 'कृषि रक्षा',
-    app_tagline: 'एआय पीक संरक्षण प्रणाली',
+    app_name: 'CultivAI',
+    app_tagline: 'एआई पीक संरक्षण प्रणाली',
     live_badge: 'थेट (LIVE)',
     offline_badge: 'ऑफलाईन',
     synced_toast: 'स्कॅन यशस्वीरित्या सिंक झाले',
     offline_banner: 'ऑफलाईन — {{count}} स्कॅन सिंक होण्याच्या प्रतीक्षेत',
 
     // Onboarding Walkthrough
-    onboard_title_1: 'कृषि रक्षामध्ये आपले स्वागत',
+    onboard_title_1: 'CultivAI मध्ये आपले स्वागत',
     onboard_desc_1: 'पिकांच्या आरोग्याची खात्रीशीर तपासणी. अचूक निदान आणि शास्त्रीय सल्ला.',
     onboard_title_2: 'पानांचे झटपट स्कॅनिंग',
     onboard_desc_2: 'क्यूआर कोडप्रमाणे पानाचा फोटो स्कॅन करा आणि क्षणात अचूक रोग ओळखा.',

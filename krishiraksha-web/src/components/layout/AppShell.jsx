@@ -83,7 +83,7 @@ export function AppShell({
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-base font-black tracking-tight text-white">
-                  Krishi<span className="text-emerald-400">Raksha</span>
+                  Cultiv<span className="text-emerald-400">AI</span>
                 </span>
                 <span className="text-[9px] font-extrabold uppercase px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                   SIH26131

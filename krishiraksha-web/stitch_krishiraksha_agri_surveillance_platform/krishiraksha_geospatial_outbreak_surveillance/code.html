@@ -1,0 +1,686 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-container": "#663500",
+          "surface-tint": "#006d30",
+          "error": "#ba1a1a",
+          "background": "#f8f9ff",
+          "tertiary-container": "#676f86",
+          "on-primary": "#ffffff",
+          "surface-bright": "#f8f9ff",
+          "surface-container": "#e5eeff",
+          "primary-fixed-dim": "#79db8d",
+          "secondary": "#904d00",
+          "on-error": "#ffffff",
+          "surface-variant": "#d3e4fe",
+          "inverse-surface": "#213145",
+          "on-primary-fixed": "#00210a",
+          "surface": "#f8f9ff",
+          "primary-container": "#15803d",
+          "on-tertiary-fixed": "#131b2e",
+          "on-background": "#0b1c30",
+          "on-surface-variant": "#3f493f",
+          "tertiary": "#4f576d",
+          "primary-fixed": "#95f8a7",
+          "surface-container-high": "#dce9ff",
+          "inverse-primary": "#79db8d",
+          "on-secondary-fixed-variant": "#6e3900",
+          "secondary-container": "#fe932c",
+          "on-secondary-fixed": "#2f1500",
+          "secondary-fixed": "#ffdcc3",
+          "surface-dim": "#cbdbf5",
+          "primary": "#00652c",
+          "outline": "#6f7a6e",
+          "tertiary-fixed": "#dae2fd",
+          "surface-container-highest": "#d3e4fe",
+          "surface-container-low": "#eff4ff",
+          "on-tertiary-container": "#f2f3ff",
+          "on-error-container": "#93000a",
+          "tertiary-fixed-dim": "#bec6e0",
+          "on-tertiary-fixed-variant": "#3f465c",
+          "on-primary-container": "#d3ffd5",
+          "inverse-on-surface": "#eaf1ff",
+          "secondary-fixed-dim": "#ffb77d",
+          "outline-variant": "#becabc",
+          "surface-container-lowest": "#ffffff",
+          "on-surface": "#0b1c30",
+          "on-primary-fixed-variant": "#005323",
+          "error-container": "#ffdad6",
+          "on-tertiary": "#ffffff",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "gutter-desktop": "1.5rem",
+          "space-sm": "0.75rem",
+          "margin-mobile": "1rem",
+          "space-2xs": "0.25rem",
+          "margin-tablet": "2rem",
+          "space-lg": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-3xl": "4rem",
+          "space-md": "1rem",
+          "space-2xl": "3rem",
+          "margin-desktop": "3rem",
+          "space-xs": "0.5rem"
+        },
+        "fontFamily": {
+          "display-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Inter"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "display-lg-mobile": ["Plus Jakarta Sans"],
+          "label-sm": ["Inter"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "body-md": ["Inter"],
+          "label-md": ["Inter"],
+          "code-data": ["Inter"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "metric-stat": ["Plus Jakarta Sans"],
+          "body-lg": ["Inter"],
+          "headline-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+          "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+          "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.03em", "fontWeight": "600" }],
+          "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+          "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+          "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+          "code-data": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }],
+          "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "metric-stat": ["2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+          "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="KrishiRaksha Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U_9xye5kB8Cd_pki_eOOj0oyl2EOxO4rZjf-gUAptmcmj1zUijMGwChCDa4BrEYGD8E7HWPLri-L_-RF9UoYuTysM3PTANcIRzdcaeqyeWSwERX-cGoCAqkuXPfLbZ7l-brSkbhGM7A1zaM5ZM3D81oGS60C8qk0OXIhKQHftx6WZabejjd_djjTsWtniWBL81aSeTc1pig6rqtb34Vw59kxJgVM3b-qW1ELj876iyW8CJQAy208xcoec"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">CultivAI</span><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">SIH26131</span></div><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-xl" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="farmer-portal" href="#">Farmer Portal</a><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="expert-desk" href="#">Expert Desk</a><a aria-current="page" class="px-space-md py-1.5 transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="district-surveillance-map" href="#">District Surveillance Map</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-lowest border border-outline-variant/50"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface">Online (Sync Active)</span></div><div class="hidden md:flex items-center px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="font-semibold text-on-surface mr-1">Role:</span> Farmer / Officer</div><div class="flex items-center gap-1 px-space-xs py-1 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined text-base">translate</span><span class="font-medium">मराठी (Marathi)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-xl">light_mode</span></button><div class="flex items-center pl-space-2xs border-l border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJuNIGd4mb5-jLWJaRaypNrgF0eA-_ZFFzK4kxcHk9jy3ujEcDx2dLjcBprwhrWGCx8bAYzC8IY2e-dqXwZe9mQBpsCZZ2ex2GRVt0DGENShwz2yPR-HiPOjl09fSnRBa40gafoE8bnp9DOAuNjZPe3SjkLnE1I077sSgKtgACKuQgCRgrOVdJmBeeReRPLqZCnUPLBsMF9A2UA89XsmAeS9UkCmjNp_Wi58jKs_VE4TvjWeTK9SkT"></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 hidden md:flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Epidemiological Hub</span></div><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="field-triage-queue" href="#"><span class="material-symbols-outlined text-xl">biotech</span><span class="font-label-md text-label-md">Specimen Triage</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="pest-outbreak-registry" href="#"><span class="material-symbols-outlined text-xl">pest_control</span><span class="font-label-md text-label-md">Pathogen Registry</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="clinical-advisories" href="#"><span class="material-symbols-outlined text-xl">broadcast_on_personal</span><span class="font-label-md text-label-md">Clinical Advisories</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="taluk-telemetry-reports" href="#"><span class="material-symbols-outlined text-xl">analytics</span><span class="font-label-md text-label-md">Taluk Telemetry</span></a></nav></div><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Field Gateway</span><span class="font-code-data text-code-data text-primary">v2.4-SIH</span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Maharashtra Taluk Grid</span></div></aside><div class="md:pl-64"><main class="relative pt-16 bg-surface min-h-screen w-full px-gutter-desktop py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Command Center Header Info Strip -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">radar</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">State Epidemiology Cell</span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container font-code-data text-code-data">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span> Live Surveillance
+          </span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Maharashtra Agro-Pathogen Geospatial Grid</h1>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary">calendar_today</span>
+<span class="">Rabi 2024-25 • Epizootic Cycle W42</span>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">refresh</span>
+<span class="">Telemetry Auto-Sync: 30s</span>
+</button>
+</div>
+</div>
+<!-- Top Metric Bar (4 KPI Cards in 4-column row) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-tertiary">Total Scans Today</span>
+<span class="inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-full bg-on-primary-container/25 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12%
+        </span>
+</div>
+<div class="my-space-xs flex items-baseline justify-between">
+<span class="font-metric-stat text-metric-stat text-on-surface">14,250</span>
+<svg class="w-20 h-7 text-primary" fill="none" viewBox="0 0 80 28">
+<path d="M0 24 L14 20 L28 22 L42 12 L56 16 L70 6 L80 4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M0 24 L14 20 L28 22 L42 12 L56 16 L70 6 L80 4 L80 28 L0 28 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm text-primary">smartphone</span>
+<span class="">Farmer App &amp; Field Agents (+1,520 vs last week)</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-tertiary">Active High-Risk Clusters</span>
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-error"></span>
+</span>
+</div>
+<div class="my-space-xs flex items-baseline justify-between">
+<span class="font-metric-stat text-metric-stat text-error">8 Talukas</span>
+<span class="px-space-xs py-0.5 rounded-md bg-error-container text-on-error-container font-label-sm text-label-sm">Zone L-3</span>
+</div>
+<div class="flex items-center gap-1 text-error font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span class="truncate">Akola, Yavatmal &amp; Jalna critical</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-tertiary">Chemical Spray Reduction</span>
+<span class="inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-full bg-on-primary-container/25 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">eco</span> Target -40%
+        </span>
+</div>
+<div class="my-space-xs flex items-baseline justify-between">
+<span class="font-metric-stat text-metric-stat text-primary">-32.4%</span>
+<span class="text-on-surface-variant font-code-data text-code-data">Δ 4,120 kL</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm text-primary">psychology_alt</span>
+<span class="">Organic IPM &amp; pheromone trap adoption up</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-tertiary">Farmer Savings Generated</span>
+<span class="w-6 h-6 rounded-full bg-secondary-container/30 text-secondary flex items-center justify-center font-bold text-xs">₹</span>
+</div>
+<div class="my-space-xs flex items-baseline justify-between">
+<span class="font-metric-stat text-metric-stat text-on-surface">₹14.2 Cr</span>
+<span class="text-secondary font-label-sm text-label-sm">Vidarbha + Marathwada</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm text-secondary">savings</span>
+<span class="">Direct input pesticide cost optimization</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace: Split View Center/Left Map + Right Priority Queue -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- 1. Center / Left Area: Geospatial Map Canvas (68% width on desktop -> 8 cols of 12) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Interactive Map Frame -->
+<div class="relative w-full rounded-2xl bg-inverse-surface text-inverse-on-surface overflow-hidden shadow-xl min-h-[620px] flex flex-col justify-between p-space-md">
+<!-- Ambient Top Bar of Map Controls -->
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-space-sm bg-inverse-surface/85 backdrop-blur-md p-space-xs rounded-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded-lg bg-surface-container-lowest/10 text-inverse-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span> Heatmap: Cotton Bollworm &amp; Rust
+            </span>
+<div class="hidden sm:flex items-center gap-1 text-inverse-on-surface/70 font-code-data text-code-data px-space-xs">
+<span class="">Projection: EPSG:4326</span>
+<span class="">• Lat: 19.75° N, Long: 75.71° E</span>
+</div>
+</div>
+<!-- Controls: Toggles & Zoom -->
+<div class="flex items-center gap-space-2xs">
+<button class="px-space-xs py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors" id="btn-layer-districts">
+<span class="material-symbols-outlined text-sm">layers</span> Districts
+            </button>
+<button class="px-space-xs py-1 rounded bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-inverse-on-surface font-label-sm text-label-sm flex items-center gap-1 transition-colors" id="btn-layer-sensors">
+<span class="material-symbols-outlined text-sm">sensors</span> IoT Traps (240)
+            </button>
+<div class="flex items-center ml-2 bg-surface-container-lowest/10 rounded-lg p-0.5">
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-lowest/20 rounded text-inverse-on-surface">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-lowest/20 rounded text-inverse-on-surface">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center hover:bg-surface-container-lowest/20 rounded text-inverse-on-surface">
+<span class="material-symbols-outlined text-sm">fit_screen</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SVG Map of Maharashtra Representation -->
+<div class="relative w-full h-[460px] my-auto flex items-center justify-center overflow-hidden">
+<svg class="w-full h-full object-contain filter drop-shadow-lg" fill="none" viewBox="0 0 980 620" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Radial gradients for glowing outbreak heat halos -->
+<radialGradient cx="50%" cy="50%" id="grad-red-critical" r="50%">
+<stop offset="0%" stop-color="#ba1a1a" stop-opacity="0.9"></stop>
+<stop offset="35%" stop-color="#ba1a1a" stop-opacity="0.6"></stop>
+<stop offset="70%" stop-color="#ba1a1a" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#ba1a1a" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient cx="50%" cy="50%" id="grad-yellow-advisory" r="50%">
+<stop offset="0%" stop-color="#fe932c" stop-opacity="0.85"></stop>
+<stop offset="45%" stop-color="#fe932c" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#fe932c" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient cx="50%" cy="50%" id="grad-green-healthy" r="50%">
+<stop offset="0%" stop-color="#15803d" stop-opacity="0.75"></stop>
+<stop offset="60%" stop-color="#15803d" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#15803d" stop-opacity="0"></stop>
+</radialGradient>
+<!-- Subtle district territory pattern -->
+<pattern height="24" id="grid-subtle" patternUnits="userSpaceOnUse" width="24">
+<path d="M 24 0 L 0 0 0 24" fill="none" stroke="#334155" stroke-opacity="0.25" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<!-- Grid backdrop -->
+<rect fill="url(#grid-subtle)" height="620" width="980"></rect>
+<!-- Stylized District Polygons for Maharashtra Geometry -->
+<!-- Western Ghats & Konkan Strip (Green baseline) -->
+<path d="M 120 280 L 140 240 L 165 260 L 160 380 L 175 440 L 130 480 L 110 390 Z" fill="#13241b" id="poly-konkan" stroke="#234232" stroke-width="1.5"></path>
+<path d="M 165 260 L 220 220 L 290 230 L 275 285 L 210 310 L 160 280 Z" fill="#1b2e23" id="poly-nashik" stroke="#2a4e39" stroke-width="1.5"></path>
+<path d="M 210 310 L 275 285 L 340 330 L 315 410 L 225 395 L 160 380 Z" fill="#162c1e" id="poly-pune" stroke="#254a33" stroke-width="1.5"></path>
+<path d="M 340 330 L 430 360 L 450 435 L 390 470 L 315 410 Z" fill="#182e22" id="poly-solapur" stroke="#294e39" stroke-width="1.5"></path>
+<!-- Marathwada Zone (Yellow Warning Transition) -->
+<path d="M 370 235 L 450 220 L 490 270 L 440 330 L 360 290 Z" fill="#2d2715" id="poly-jalna" stroke="#4d3f18" stroke-width="1.5"></path>
+<path d="M 490 270 L 590 280 L 610 370 L 520 400 L 440 330 Z" fill="#2c2817" id="poly-nanded" stroke="#4a3e1b" stroke-width="1.5"></path>
+<!-- Vidarbha Zone (Red High-Risk Epidemic Hotspot) -->
+<path d="M 450 220 L 540 170 L 575 220 L 515 265 L 450 220 Z" fill="#36171a" id="poly-akola" stroke="#682129" stroke-width="1.8"></path>
+<path d="M 540 170 L 630 140 L 670 190 L 590 230 L 575 220 Z" fill="#301f1a" id="poly-amravati" stroke="#5b2d21" stroke-width="1.5"></path>
+<path d="M 515 265 L 590 230 L 660 270 L 635 340 L 550 330 Z" fill="#3a1618" id="poly-yavatmal" stroke="#712328" stroke-width="1.8"></path>
+<path d="M 670 190 L 760 160 L 800 220 L 730 260 L 660 230 Z" fill="#202a24" id="poly-nagpur" stroke="#2d493a" stroke-width="1.5"></path>
+<path d="M 660 270 L 750 260 L 790 350 L 710 400 L 635 340 Z" fill="#222c23" id="poly-chandrapur" stroke="#314c3a" stroke-width="1.5"></path>
+<!-- Outbreak Heat Halo Layers (Glow effects) -->
+<!-- RED CLUSTERS: Akola & Yavatmal Pink Bollworm -->
+<circle class="animate-pulse" cx="510" cy="245" fill="url(#grad-red-critical)" r="75"></circle>
+<circle class="animate-pulse" cx="590" cy="275" fill="url(#grad-red-critical)" r="85" style="animation-delay: 400ms;"></circle>
+<circle cx="510" cy="245" fill="#ba1a1a" fill-opacity="0.8" r="14"></circle>
+<circle cx="590" cy="275" fill="#ba1a1a" fill-opacity="0.8" r="16"></circle>
+<!-- YELLOW HALOS: Jalna Foliar Rust Warning -->
+<circle cx="430" cy="275" fill="url(#grad-yellow-advisory)" r="65"></circle>
+<circle cx="430" cy="275" fill="#fe932c" fill-opacity="0.85" r="11"></circle>
+<!-- GREEN HALOS: Western Maharashtra Baseline -->
+<circle cx="260" cy="340" fill="url(#grad-green-healthy)" r="70"></circle>
+<circle cx="220" cy="270" fill="url(#grad-green-healthy)" r="60"></circle>
+<!-- Vector Vector Dispersal Wind Arrows (Simulating eastward velocity) -->
+<g opacity="0.6" stroke="#fca5a5" stroke-dasharray="3 3">
+<path d="M 520 235 Q 560 240 600 260" marker-end="url(#arrowhead)" stroke-width="1.5"></path>
+<path d="M 530 265 Q 570 280 610 300" stroke-width="1.5"></path>
+</g>
+<!-- District Labels & Metadata Pills directly mapped -->
+<!-- Akola Pin -->
+<g transform="translate(480, 215)">
+<rect fill="#111c2e" fill-opacity="0.9" height="20" rx="4" stroke="#ba1a1a" stroke-width="1" width="76" x="-10" y="-12"></rect>
+<circle cx="-2" cy="-2" fill="#ba1a1a" r="3"></circle>
+<text fill="#ffffff" font-family="Plus Jakarta Sans" font-size="10" font-weight="700" x="8" y="2">AKOLA (L3)</text>
+</g>
+<!-- Yavatmal Pin -->
+<g transform="translate(565, 280)">
+<rect fill="#111c2e" fill-opacity="0.9" height="20" rx="4" stroke="#ba1a1a" stroke-width="1" width="94" x="-10" y="-12"></rect>
+<circle cx="-2" cy="-2" fill="#ba1a1a" r="3"></circle>
+<text fill="#ffffff" font-family="Plus Jakarta Sans" font-size="10" font-weight="700" x="8" y="2">YAVATMAL (L3)</text>
+</g>
+<!-- Jalna Pin -->
+<g transform="translate(400, 260)">
+<rect fill="#111c2e" fill-opacity="0.9" height="20" rx="4" stroke="#fe932c" stroke-width="1" width="70" x="-8" y="-12"></rect>
+<circle cx="-1" cy="-2" fill="#fe932c" r="3"></circle>
+<text fill="#ffffff" font-family="Plus Jakarta Sans" font-size="10" font-weight="600" x="8" y="2">JALNA (L2)</text>
+</g>
+<!-- Amravati Pin -->
+<g transform="translate(570, 160)">
+<rect fill="#111c2e" fill-opacity="0.9" height="20" rx="4" stroke="#fe932c" stroke-width="1" width="82" x="-8" y="-12"></rect>
+<circle cx="-1" cy="-2" fill="#fe932c" r="3"></circle>
+<text fill="#ffffff" font-family="Plus Jakarta Sans" font-size="10" font-weight="600" x="8" y="2">AMRAVATI</text>
+</g>
+<!-- Pune Baseline Pin -->
+<g transform="translate(230, 340)">
+<rect fill="#111c2e" fill-opacity="0.8" height="20" rx="4" stroke="#15803d" stroke-width="1" width="58" x="-8" y="-12"></rect>
+<circle cx="-1" cy="-2" fill="#15803d" r="3"></circle>
+<text fill="#95f8a7" font-family="Plus Jakarta Sans" font-size="10" font-weight="600" x="8" y="2">PUNE</text>
+</g>
+<!-- Nagpur Baseline Pin -->
+<g transform="translate(710, 200)">
+<rect fill="#111c2e" fill-opacity="0.8" height="20" rx="4" stroke="#15803d" stroke-width="1" width="66" x="-8" y="-12"></rect>
+<circle cx="-1" cy="-2" fill="#15803d" r="3"></circle>
+<text fill="#95f8a7" font-family="Plus Jakarta Sans" font-size="10" font-weight="600" x="8" y="2">NAGPUR</text>
+</g>
+</svg>
+<!-- Floating Legend inside Map Canvas -->
+<div class="absolute bottom-4 left-4 bg-inverse-surface/90 backdrop-blur-md p-space-sm rounded-xl border border-outline/20 text-inverse-on-surface shadow-md">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-1.5 block">Risk Tiers (SIH Protocol)</span>
+<div class="flex flex-col gap-1.5 font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error ring-2 ring-error/30 animate-pulse"></span>
+<span class="">Active Pink Bollworm Outbreak (L-3)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="">Early Foliar Rust Warning (L-2)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="">Healthy Crop Canopy / Nominal (L-0)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Floating Spatiotemporal Playback Slider -->
+<div class="relative z-20 w-full bg-surface-container-lowest/10 backdrop-blur-md p-space-sm rounded-xl border border-outline/10 flex flex-col gap-space-xs mt-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">history_toggle_off</span>
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface">Outbreak Time-Lapse (Last 14 Days)</span>
+<span class="font-code-data text-code-data text-inverse-on-surface/70">Oct 10 — Oct 24, 2024</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest/15 text-inverse-on-surface font-code-data text-code-data">
+                Spread velocity: <strong class="text-error font-semibold">+4.2 km/day eastward</strong>
+</span>
+<div class="flex items-center bg-surface-container-lowest/15 rounded p-0.5 font-label-sm text-label-sm">
+<button class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary">1x</button>
+<button class="px-1.5 py-0.5 rounded hover:bg-surface-container-lowest/20 text-inverse-on-surface">2x</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full">
+<button class="w-9 h-9 rounded-lg bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-colors" id="playback-btn">
+<span class="material-symbols-outlined text-xl">play_arrow</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<input class="w-full accent-primary h-1.5 bg-surface-container-highest rounded-lg cursor-pointer" max="14" min="1" type="range" value="11">
+<div class="flex justify-between font-code-data text-code-data text-inverse-on-surface/60 px-0.5">
+<span class="">Oct 10 (Seeding)</span>
+<span class="">Oct 14</span>
+<span class="">Oct 18 (Spore Inversion)</span>
+<span class="text-error font-semibold">Oct 22 (Current Peak)</span>
+<span class="">Oct 24 (Proj.)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Field Specimen Gallery Preview (Real-time telemetry snapshots) -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">photo_library</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Verified Specimen Telemetry from Cluster Hotspots</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Real-time edge detections (confidence &gt; 94%)</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<!-- Specimen 1 -->
+<div class="relative rounded-xl overflow-hidden bg-surface-container group">
+<img class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Close up clinical macro photography of a green cotton plant leaf infested with pink bollworm larvae, agricultural laboratory lighting, sharp analytical focus with diagnostic precision, 8k" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4dnUwXdPRF3czjz6tQb47izQRx7oBUiKOUNCqdyYfjcQu0Ao63HpNu06H-InvEL18gM7llbyo7Kb6vSqn2-f0YDB_4th2HMVv91lQt5sOrIYCULj3lvqnWEOA9m_bGbJzn0RX4MMtXngRNZVNNsUXY_RRa2U4qmikpi2kksSpKWYGRHKlf8MbpAQIwcozGBnZeZteQyGfH1q6EXDSv59C2mHkz9MeB3Ag1mVn5U4e_fWCdfxKaTU_">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent"></div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-error text-on-error font-code-data text-code-data">
+              Akola • Bollworm 98.4%
+            </div>
+<div class="absolute bottom-2 left-2 right-2 text-on-primary">
+<p class="font-label-sm text-label-sm font-semibold truncate">Murtizapur Taluk #302</p>
+<p class="font-body-sm text-body-sm text-surface-container-high truncate">Severe carpel carpophagy detected</p>
+</div>
+</div>
+<!-- Specimen 2 -->
+<div class="relative rounded-xl overflow-hidden bg-surface-container group">
+<img class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Agricultural agronomy field inspection photograph showing sweet orange citrus leaves suffering from early foliar fungal rust spots, golden sunlight, high clarity botany documentary style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcACdW-aI8T51qv5ugL7HkCbnakm6tu4csLTphMiD7mYPAY1_nJqqiHxf3qqIHFAAvRkdGM2eL1GVNQ6a4tSBRrlQX7B56SGQztfIhHD-YmB9oaKf8x3NE3GD6KQuVEOjcyDzHu-dUQVMh9Cj88xAT4DHuvR79y6HY5xR7WRVA1e0wzwFd7lIoBYE19N47uBQG41cW6P2lprbhfiERrRHBL2pZui4aq21Mzg9P0ivPOwxTU3EZ7gbW">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent"></div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-code-data text-code-data">
+              Jalna • Foliar Rust 92.1%
+            </div>
+<div class="absolute bottom-2 left-2 right-2 text-on-primary">
+<p class="font-label-sm text-label-sm font-semibold truncate">Ambad Taluk #114</p>
+<p class="font-body-sm text-body-sm text-surface-container-high truncate">Early leaf-margin chlorosis</p>
+</div>
+</div>
+<!-- Specimen 3 -->
+<div class="relative rounded-xl overflow-hidden bg-surface-container group">
+<img class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Overhead drone perspective of lush healthy soybean and cotton mixed agricultural fields in western Maharashtra, clean irrigation channels, vibrant green crop health, precision agriculture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFA3mffN6Tz5oWRjVZitsDETlis2sRuXgl4G6O8TjYD-ynzhdmJ10qowtXM2_T5pUUrOAVZu5byxiTRuxytNZ7U1lG5klZV8HYpCbxtqT9yJDeMErRgD8zCs0ZbQiBBqL1e4ZqLLaJoUhPbBtPhe7bxJOM2flKxNcCrlR39y817j8Rl9DGbG-m0rKxzaU_eqq65ebrhdwL1EN-B6CZLzosmaNLiv1y7tmFv3UGtD5H_RO1EanFWAqx">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-transparent to-transparent"></div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-primary-container text-on-primary font-code-data text-code-data">
+              Baramati • Baseline Clear
+            </div>
+<div class="absolute bottom-2 left-2 right-2 text-on-primary">
+<p class="font-label-sm text-label-sm font-semibold truncate">Pune Rural Zone #07</p>
+<p class="font-body-sm text-body-sm text-surface-container-high truncate">Canopy index NDVI: 0.82</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Right Sidebar: Priority Action Queue & Rapid Intervention (32% width -> 4 cols of 12) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- District Action Queue Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Priority Triage Engine</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">District Action Queue</h2>
+</div>
+<span class="px-space-xs py-1 rounded bg-surface-container-high text-on-surface font-code-data text-code-data font-semibold">
+            Ranked by Severity
+          </span>
+</div>
+<!-- Ranked District List -->
+<div class="flex flex-col gap-space-xs">
+<!-- Rank #1: Akola District -->
+<div class="p-space-sm rounded-xl bg-error-container/30 hover:bg-error-container/45 transition-colors flex flex-col gap-1.5 cursor-pointer shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-error text-on-error flex items-center justify-center font-bold text-xs">#1</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Akola District</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-semibold animate-pulse">
+                Red Critical
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class=""><strong class="text-on-surface">Crop:</strong> Cotton (Bt-II)</div>
+<div class=""><strong class="text-error font-semibold">420</strong> Incidents / 24h</div>
+<div class=""><strong class="text-on-surface">Risk Area:</strong> 18,400 Ha</div>
+<div class=""><strong class="text-on-surface">Trap Count:</strong> 34 moths/night</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full rounded-full w-[88%]"></div>
+</div>
+</div>
+<!-- Rank #2: Yavatmal District -->
+<div class="p-space-sm rounded-xl bg-error-container/20 hover:bg-error-container/35 transition-colors flex flex-col gap-1.5 cursor-pointer shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-error/90 text-on-error flex items-center justify-center font-bold text-xs">#2</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Yavatmal District</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error/90 text-on-error font-label-sm text-label-sm font-semibold">
+                Red Critical
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class=""><strong class="text-on-surface">Crop:</strong> Cotton &amp; Soybean</div>
+<div class=""><strong class="text-error font-semibold">315</strong> Incidents / 24h</div>
+<div class=""><strong class="text-on-surface">Risk Area:</strong> 14,200 Ha</div>
+<div class=""><strong class="text-on-surface">Larval Stage:</strong> Instar II-III</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-error h-full rounded-full w-[74%]"></div>
+</div>
+</div>
+<!-- Rank #3: Jalna District -->
+<div class="p-space-sm rounded-xl bg-secondary-container/15 hover:bg-secondary-container/25 transition-colors flex flex-col gap-1.5 cursor-pointer shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">#3</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Jalna District</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+                Yellow Advisory
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class=""><strong class="text-on-surface">Crop:</strong> Sweet Orange &amp; Cotton</div>
+<div class=""><strong class="text-secondary font-semibold">180</strong> Incidents / 24h</div>
+<div class=""><strong class="text-on-surface">Risk Area:</strong> 8,700 Ha</div>
+<div class=""><strong class="text-on-surface">Pathogen:</strong> Rust spore bloom</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary-container h-full rounded-full w-[48%]"></div>
+</div>
+</div>
+<!-- Rank #4: Amravati District -->
+<div class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col gap-1.5 cursor-pointer shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-md bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-xs">#4</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Amravati District</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                Yellow Advisory
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<div class=""><strong class="text-on-surface">Crop:</strong> Pigeon Pea (Tur)</div>
+<div class=""><strong class="text-tertiary font-semibold">124</strong> Incidents / 24h</div>
+<div class=""><strong class="text-on-surface">Risk Area:</strong> 5,100 Ha</div>
+<div class=""><strong class="text-on-surface">Pathogen:</strong> Pod Borer onset</div>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-tertiary h-full rounded-full w-[32%]"></div>
+</div>
+</div>
+</div>
+<!-- 1-Click Mass Intervention Action -->
+<div class="pt-space-xs flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-xl bg-error/10 flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-xl">campaign</span>
+<span class="font-headline-sm text-headline-sm">Mass Emergency Intervention</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Instantly dispatches vernacular bio-pesticide dosage advisories (MahaKrishi Gateway) to high-incidence GPS geo-fenced boundaries.
+            </p>
+<button class="w-full py-3 px-space-md rounded-xl bg-error hover:bg-on-error-container text-on-error font-headline-sm text-headline-sm flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-md" id="btn-broadcast">
+<span class="material-symbols-outlined text-xl">cell_tower</span>
+<span class="">Broadcast Regional SMS to 45,000 Farmers</span>
+</button>
+</div>
+<!-- Real-time Ticker -->
+<div class="flex items-center gap-2 px-space-sm py-2 rounded-lg bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-base text-primary">mark_chat_read</span>
+<span class="truncate">Last alert sent <strong>4m ago</strong> to 3,200 farmers in Murtizapur taluka</span>
+</div>
+<!-- Quick Export Tools -->
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="py-2 px-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base text-error">picture_as_pdf</span>
+<span class="">Download PDF</span>
+</button>
+<button class="py-2 px-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base text-primary">table_view</span>
+<span class="">Export CSV</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Clinical Weather & Vector Dispersion Forecast -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Micro-Climate Vector Risk</span>
+<span class="font-code-data text-code-data text-primary">IMD Radar Feed</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline block">Humidity</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">84%</span>
+<span class="text-error font-code-data text-code-data block">High Spore Index</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline block">Avg Temp</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">31.8°C</span>
+<span class="text-tertiary font-code-data text-code-data block">Optimal Incubation</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-outline block">Wind Vector</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">14 km/h</span>
+<span class="text-error font-code-data text-code-data block">E-NE Drift</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Modal for SMS Broadcast Confirmation (hidden by default, toggled via JS) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="broadcast-modal">
+<div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-space-lg shadow-2xl flex flex-col gap-space-md animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-2xl">warning</span>
+<span class="font-headline-md text-headline-md">Confirm Emergency Protocol</span>
+</div>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant" id="modal-close-btn">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+        You are about to issue a high-priority <strong>State Agricultural Alert</strong> via SMS &amp; IVR to <strong>45,000 registered farmers</strong> across 8 talukas in Akola &amp; Yavatmal.
+      </p>
+<div class="p-space-sm rounded-xl bg-surface-container font-code-data text-code-data text-on-surface-variant">
+        "कृषिरक्षा इशारा: अकोला व यवतमाळ तालुक्यात गुलाबी बोंडअळीचा प्रादुर्भाव. ५% निंबोळी अर्क किंवा फेरोमोन ट्रॅपचा त्वरित वापर करा. संपर्क: १८००-१८०-१५५१"
+      </div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" id="modal-cancel-btn">
+          Cancel
+        </button>
+<button class="px-space-md py-2 rounded-xl bg-error hover:bg-on-error-container text-on-error font-headline-sm text-headline-sm flex items-center gap-1.5 transition-colors" id="modal-confirm-btn">
+<span class="material-symbols-outlined text-lg">send</span>
+<span class="">Authorize Dispatch</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Broadcast Modal Toggle Logic
+    const broadcastBtn = document.getElementById('btn-broadcast');
+    const modal = document.getElementById('broadcast-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+
+    function openModal() {
+      if (modal) modal.classList.remove('hidden');
+    }
+    function closeModal() {
+      if (modal) modal.classList.add('hidden');
+    }
+
+    if (broadcastBtn) broadcastBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', function() {
+        confirmBtn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin">refresh</span> Dispatching...';
+        confirmBtn.disabled = true;
+        setTimeout(function() {
+          closeModal();
+          confirmBtn.innerHTML = '<span class="material-symbols-outlined text-lg">send</span> Authorize Dispatch';
+          confirmBtn.disabled = false;
+          alert('Emergency SMS successfully queued across Maharashtra Krishi Gateway (45,000 recipients).');
+        }, 1200);
+      });
+    }
+
+    // Playback slider toggle icon
+    const playBtn = document.getElementById('playback-btn');
+    let isPlaying = false;
+    if (playBtn) {
+      playBtn.addEventListener('click', function() {
+        isPlaying = !isPlaying;
+        playBtn.innerHTML = isPlaying ? 
+          '<span class="material-symbols-outlined text-xl">pause</span>' : 
+          '<span class="material-symbols-outlined text-xl">play_arrow</span>';
+      });
+    }
+  })();
+</script></main></div>
+
+</body></html>

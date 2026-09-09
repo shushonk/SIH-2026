@@ -64,7 +64,7 @@ export const OnboardingScreen = ({ onFinish }) => {
       <View style={styles.topBar}>
         <View style={[styles.logoPill, { backgroundColor: theme.colors.primaryBg }]}>
           <Text style={[styles.logoPillText, { color: theme.colors.primaryDark }]}>
-            KrishiRaksha SIH26131
+            CultivAI SIH26131
           </Text>
         </View>
         <TouchableOpacity onPress={onFinish} style={styles.skipBtn}>

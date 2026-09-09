@@ -427,7 +427,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
             {/* Sample Image Library Selection */}
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-2">
-                1. Select Leaf Specimen (or upload real photo):
+                1. Select Leaf Specimen (or take real photo):
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {SAMPLE_LEAF_IMAGES.map((sample) => (
@@ -462,7 +462,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
 
             {/* Custom file upload */}
             <div className="flex items-center gap-3 pt-2">
-              <label className="text-xs text-slate-400">Upload Camera Photo:</label>
+              <label className="text-xs text-slate-400">Camera Photo:</label>
               <input
                 type="file"
                 accept="image/*"
@@ -595,7 +595,7 @@ export function FarmerView({ activeStoryStep, onStoryActionComplete, currentLang
                       className="flex-1 py-2 px-3 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>{isNarrowing ? 'Narrowing Diagnosis…' : 'Upload Leaf Underside Photo (Narrow Diagnosis)'}</span>
+                      <span>{isNarrowing ? 'Narrowing Diagnosis…' : 'Leaf Underside Photo (Narrow Diagnosis)'}</span>
                     </button>
                   </div>
                 ) : (

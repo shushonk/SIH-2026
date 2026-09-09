@@ -159,7 +159,7 @@ export function AuthView() {
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          Krishi<span className="text-emerald-400">Raksha</span>
+          Cultiv<span className="text-emerald-400">AI</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-400 mt-1">
           AI-Powered Closed-Loop Agricultural Decision-Support Platform · <strong className="text-emerald-400">SIH26131</strong>

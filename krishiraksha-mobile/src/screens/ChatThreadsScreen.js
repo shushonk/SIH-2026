@@ -76,6 +76,34 @@ export const ChatThreadsScreen = ({ navigation }) => {
         />
       </View>
 
+      {/* CultivAI Assistant 24/7 AI Chatbot Entry */}
+      <TouchableOpacity
+        style={[
+          styles.copilotBanner,
+          { backgroundColor: theme.colors.surfaceContainerLow || '#eff4ff', borderColor: theme.colors.primaryLight || '#15803d' },
+        ]}
+        onPress={() => navigation.navigate('Copilot')}
+      >
+        <View style={styles.copilotAvatar}>
+          <Text style={{ fontSize: 24 }}>🤖</Text>
+          <View style={styles.copilotOnlineDot} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <View style={styles.copilotTitleRow}>
+            <Text style={[styles.copilotTitle, { color: theme.colors.text }]}>
+              CultivAI Assistant (कृषी मित्र)
+            </Text>
+            <View style={styles.aiBadge}>
+              <Text style={styles.aiBadgeText}>24/7 AI</Text>
+            </View>
+          </View>
+          <Text style={[styles.copilotSub, { color: theme.colors.textSecondary }]}>
+            Bilingual Voice & Text • Instant Disease & Dosage Advice
+          </Text>
+        </View>
+        <Text style={{ fontSize: 18, color: theme.colors.primary }}>➔</Text>
+      </TouchableOpacity>
+
       {/* Threads List */}
       <FlatList
         data={filteredThreads}
@@ -205,5 +233,59 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 11,
     fontWeight: '800',
+  },
+  copilotBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 16,
+    marginBottom: 14,
+    padding: 14,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    gap: 12,
+  },
+  copilotAvatar: {
+    position: 'relative',
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#d3ffd5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  copilotOnlineDot: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#00652c',
+    borderWidth: 2,
+    borderColor: '#fff',
+  },
+  copilotTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  copilotTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+  },
+  aiBadge: {
+    backgroundColor: '#00652c',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  aiBadgeText: {
+    color: '#fff',
+    fontSize: 9,
+    fontWeight: '800',
+  },
+  copilotSub: {
+    fontSize: 11,
+    marginTop: 2,
   },
 });

@@ -121,16 +121,16 @@ SPATIAL & REGIONAL SIGNALS:
 """
 
         # Role-based prompt specialization (Item 6)
-        if role == "Farmer":
-            system_instruction = f"""You are KrishiRaksha AI Agricultural Copilot for Farmers, powered by the reasoning model gpt-oss:120b-cloud.
-CRITICAL INSTRUCTION ON STYLE:
-- Answer in 2 to 4 short sentences maximum. Use plain, easy words.
-- Give exactly ONE clear, practical next step.
-- Do NOT output a wall of text. Only expand if the farmer explicitly asks "tell me more".
+        if role == "farmer":
+            system_instruction = f"""You are CultivAI AI Agricultural Copilot for Farmers, powered by the reasoning model gpt-oss:120b-cloud.
+Your role: Provide concise, trustworthy, empathetic, and culturally grounded agricultural guidance.
+Rules:
+- Keep answers to 2-4 sentences max.
+- Always cite specific evidence from the Field Health Passport or regional clusters provided below.
 - Strictly non-prescriptive IPM: No chemical pesticide brand names or toxic dosages. Recommend safe cultural steps (pruning, drip irrigation) and contacting the local Krishi Vigyan Kendra (KVK).
-- TARGET LANGUAGE: {'Hindi' if lang == 'hi' else ('Marathi' if lang == 'mr' else 'English')}"""
+"""
         else:
-            system_instruction = f"""You are KrishiRaksha AI Copilot for Agricultural Extension Officers and Plant Pathologists, powered by gpt-oss:120b-cloud.
+            system_instruction = f"""You are CultivAI AI Copilot for Agricultural Extension Officers and Plant Pathologists, powered by gpt-oss:120b-cloud.
 Provide concise, dense, evidence-based epidemiological analysis referencing ICAR protocols, spatial risk indices, and differential margins.
 TARGET LANGUAGE: {'Hindi' if lang == 'hi' else ('Marathi' if lang == 'mr' else 'English')}"""
 
@@ -249,12 +249,13 @@ def ask_copilot(query: str, role: str = "Farmer", field_id: str = "104", lang: s
         )
 
     else:
-        answer_en = (
-            f"**KrishiRaksha Agricultural Advisory for Field {field_id}:**\n"
+        response_text = (
+            f"**CultivAI Agricultural Advisory for Field {field_id}:**\n"
             f"• Current Crop: {field.get('crop', 'Tomato')} ({field.get('variety', 'Abhinav')})\n"
             f"• Recommended Safe Practice: Practice crop sanitation, prune infected lower leaves with sterilized shears, and avoid evening overhead sprinkler irrigation.\n"
             f"• Consult your local KVK extension officer for verified field recommendations."
         )
+        answer_en = response_text
         answer_hi = (
             f"**खेत {field_id} के लिए कृषि रक्षा परामर्श:**\n"
             f"• फसल: {field.get('crop', 'टमाटर')}\n"
@@ -289,7 +290,7 @@ def explain_vision_diagnosis(vision_result: dict, role: str = "Farmer", lang: st
 
     target_lang = "Hindi" if lang == "hi" else ("Marathi" if lang == "mr" else "English")
 
-    system_prompt = f"""You are KrishiRaksha Reasoning Assistant, powered by gpt-oss:120b-cloud.
+    system_prompt = f"""You are CultivAI Reasoning Assistant, powered by gpt-oss:120b-cloud.
 A separate computer vision model detected: Disease '{disease}' with {conf}% confidence and {sev} severity.
 Explain this diagnosis to an Indian farmer in 2 to 3 short, comforting sentences.
 State clearly what they should do next (e.g. prune diseased leaves, avoid wet canopy).

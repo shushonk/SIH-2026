@@ -8,15 +8,13 @@ import {
   Image,
   ActivityIndicator,
   Alert,
+  Share,
 } from 'react-native';
 import { useTheme } from '../theme/ThemeContext';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { Header } from '../components/common/Header';
-import { StatusChip } from '../components/common/StatusChip';
-import { StepProgress } from '../components/common/StepProgress';
-import { ActionCard } from '../components/common/ActionCard';
 import { OfflineBanner } from '../components/common/OfflineBanner';
 
 export const ScanResultScreen = ({ route, navigation }) => {
@@ -25,7 +23,7 @@ export const ScanResultScreen = ({ route, navigation }) => {
   const { role } = useAuth();
 
   const {
-    scanId,
+    scanId = '8492',
     observation,
     analysis: initialAnalysis,
     sampleItem,
@@ -33,301 +31,298 @@ export const ScanResultScreen = ({ route, navigation }) => {
   } = route.params || {};
 
   const [analysis, setAnalysis] = useState(initialAnalysis || {});
-  const [caseStatus, setCaseStatus] = useState(
-    initialAnalysis?.needs_investigation
-      ? 'awaiting_info'
-      : isOffline
-      ? 'queued'
-      : 'under_expert_review'
-  );
-  const [stepNumber, setStepNumber] = useState(initialAnalysis?.needs_investigation ? 2 : 3);
-  const [aiAdvisory, setAiAdvisory] = useState(null);
-  const [loadingAdvisory, setLoadingAdvisory] = useState(false);
-  const [isNarrowing, setIsNarrowing] = useState(false);
   const [escalated, setEscalated] = useState(false);
+  const [isNarrowing, setIsNarrowing] = useState(false);
 
-  useEffect(() => {
-    fetchSimplifiedAdvisory();
-  }, [language, analysis.top_disease]);
+  const disease = analysis.top_disease || 'Cercospora Leaf Spot';
+  const confidence = Math.round((analysis.top_confidence || 0.94) * 100);
+  const severity = analysis.severity_estimate || 'Moderate Severity';
 
-  const fetchSimplifiedAdvisory = async () => {
-    if (!analysis?.top_disease) return;
-    setLoadingAdvisory(true);
-    try {
-      const res = await api.post('/copilot/explain-diagnosis', {
-        vision_result: {
-          top_disease: analysis.top_disease,
-          top_confidence: analysis.top_confidence || 0.85,
-          severity_estimate: analysis.severity_estimate || 'Medium',
-          differential: analysis.differential || [],
-        },
-        role,
-        language,
-      });
-      setAiAdvisory(res.data?.explanation || null);
-    } catch (e) {
-      // Offline fallback text in selected language
-      if (language === 'hi') {
-        setAiAdvisory(
-          `पत्तियों पर ${analysis.top_disease} के लक्षण पाए गए हैं। रोगग्रस्त पत्तियों को अलग करें और ड्रिप से सिंचाई करें।`
-        );
-      } else if (language === 'mr') {
-        setAiAdvisory(
-          `पानांवर ${analysis.top_disease} ची लक्षणे आढळली आहेत. बाधित पाने काढून टाका आणि झाडांना योग्य हवा खेळती ठेवा.`
-        );
-      } else {
-        setAiAdvisory(
-          `Signs of ${analysis.top_disease} detected. Prune infected lower foliage to halt spore spread, avoid evening wetness, and consult local extension.`
-        );
-      }
-    } finally {
-      setLoadingAdvisory(false);
+  // Disease translations for Marathi & Hindi subtitles
+  const getVernacularTitle = (dis) => {
+    if (dis.includes('Cercospora') || dis.includes('Early Blight') || dis.includes('Blight')) {
+      return 'तपकिरी पानांचे ठिपके (करपा रोग)';
     }
+    if (dis.includes('Septoria')) {
+      return 'सेप्टोरिया पानावरील ठिपके';
+    }
+    if (dis.includes('Whitefly')) {
+      return 'पांढरी माशी प्रादुर्भाव';
+    }
+    if (dis.includes('Healthy')) {
+      return 'निरोगी पीक पर्णसंभार';
+    }
+    return 'तपकिरी पानांचे ठिपके';
+  };
+
+  const handleShareWhatsApp = async () => {
+    const reportText = `📋 *CultivAI Diagnostic Report #${scanId ? String(scanId).substring(0, 6) : '8492'}*\n` +
+      `🌿 *Crop*: Cotton / Tomato\n` +
+      `🔬 *Diagnosis*: ${disease} (${getVernacularTitle(disease)})\n` +
+      `📊 *Confidence*: ${confidence}% • *Severity*: ${severity}\n` +
+      `📍 *Location*: Nashik, Maharashtra\n\n` +
+      `🚫 *Warning*: डू नॉट स्प्रे महागडी रसायने (Avoid heavy broad-spectrum chemicals)\n` +
+      `✅ *Recommended IPM*:\n` +
+      `1. 5% NSKE Spray (Neem Seed Kernel Extract)\n` +
+      `2. 3-Foot Row Drainage Trenching\n\n` +
+      `CultivAI AI Agricultural Decision Support System`;
+
+    try {
+      await Share.share({ message: reportText });
+    } catch (e) {
+      Alert.alert('WhatsApp Share', reportText);
+    }
+  };
+
+  const handleSendToExpert = () => {
+    setEscalated(true);
+    Alert.alert(
+      'Sent to Expert',
+      'Diagnostic Report #' + (scanId || '8492') + ' has been routed to Senior Plant Pathologist Dr. Ramesh Shinde at KVK Nashik for formal review.',
+      [{ text: 'OK' }]
+    );
+  };
+
+  const handleAskAssistant = () => {
+    navigation.navigate('Copilot', {
+      initialPrompt: `I need clarification regarding Diagnostic Report #${scanId || '8492'} for ${disease}. What safe IPM steps should I take today?`,
+      diseaseContext: disease,
+      confidenceContext: confidence,
+    });
   };
 
   const handleNarrowDiagnosis = async () => {
     setIsNarrowing(true);
     try {
-      // Simulate or call backend investigation narrowing endpoint
-      const obsId = observation?.observation_id || scanId || 'obs_demo_104';
+      const obsId = observation?.observation_id || scanId || 'obs_demo_8492';
       const res = await api.post(`/observations/${obsId}/investigate`, {
-        farmer_answer: 'Inspected lower leaves: dark velvety mold visible on underside.',
-        underside_image_ref: 'leaf_underside_close_up.jpg',
+        farmer_answer: 'Inspected leaf underside: dark concentric rings with fungal velvety center.',
+        underside_image_ref: 'leaf_underside_sample.jpg',
       });
-
-      const updatedAnalysis = res.data.analysis || {
-        top_disease: 'Early Blight',
-        top_confidence: 0.88,
-        severity_estimate: 'High',
-        needs_investigation: false,
-        differential: [
-          { disease: 'Early Blight', confidence: 0.88 },
-          { disease: 'Septoria Leaf Spot', confidence: 0.08 },
-          { disease: 'Nutrient Deficiency', confidence: 0.04 },
-        ],
-      };
-
-      setAnalysis(updatedAnalysis);
-      setCaseStatus('escalated_to_expert');
-      setStepNumber(3);
+      if (res.data?.analysis) {
+        setAnalysis(res.data.analysis);
+      }
     } catch (e) {
-      // Offline simulation narrowing
       setAnalysis((prev) => ({
         ...prev,
-        top_disease: 'Early Blight (Narrowed)',
-        top_confidence: 0.88,
-        severity_estimate: 'High',
-        needs_investigation: false,
+        top_confidence: 0.96,
+        severity_estimate: 'Moderate',
       }));
-      setCaseStatus('escalated_to_expert');
-      setStepNumber(3);
     } finally {
       setIsNarrowing(false);
+      Alert.alert('Investigation Narrowed', 'Diagnostic precision updated with underside foliar telemetry.');
     }
   };
 
-  const handleEscalateToExpert = () => {
-    setEscalated(true);
-    setCaseStatus('expert_review');
-    Alert.alert(
-      'Sent to Pathologist',
-      t('escalated_success')
-    );
-  };
-
-  const disease = analysis.top_disease || 'Tomato Early Blight';
-  const confidence = Math.round((analysis.top_confidence || 0.7) * 100);
-  const severity = analysis.severity_estimate || 'Medium';
-
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <Header title={t('result_title')} />
+      <Header title="CultivAI" />
       <OfflineBanner />
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Step Progress Tracker */}
-        <StepProgress
-          currentStep={stepNumber}
-          totalSteps={4}
-          title={
-            stepNumber === 2
-              ? t('step_2')
-              : stepNumber === 3
-              ? t('step_3')
-              : t('step_4')
-          }
-        />
-
-        {/* Case Status Lifecycle Badge */}
-        <View style={styles.statusRow}>
-          <Text style={[styles.caseIdText, { color: theme.colors.textMuted }]}>
-            Case #{scanId ? String(scanId).substring(0, 12) : 'OBS-104'}
+        {/* Top Report Header Bar */}
+        <View style={styles.topReportBar}>
+          <View style={[styles.reportPill, { backgroundColor: theme.colors.surfaceContainerHigh || '#dce9ff' }]}>
+            <Text style={styles.verifiedIcon}>✓</Text>
+            <Text style={[styles.reportPillText, { color: theme.colors.text }]}>
+              Diagnostic Report #{scanId ? String(scanId).substring(0, 8) : '8492'}
+            </Text>
+          </View>
+          <Text style={[styles.timestampText, { color: theme.colors.textMuted }]}>
+            Just now
           </Text>
-          <StatusChip status={caseStatus} />
         </View>
 
-        {/* Primary Diagnosis Card */}
-        <View style={[styles.diagnosisCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-          {sampleItem?.imageUrl ? (
-            <Image source={{ uri: sampleItem.imageUrl }} style={styles.cardImage} />
-          ) : null}
+        {/* Primary Diagnostic Card */}
+        <View style={[styles.diagnosticCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+          {/* Leaf Photo Canvas */}
+          <View style={styles.mediaContainer}>
+            <Image
+              source={{
+                uri:
+                  sampleItem?.imageUrl ||
+                  'https://lh3.googleusercontent.com/aida/AEtjO1UVAqZFboySPxriykpK8ohDQ7AwfOyIav3mN0sk_HYxDcdVWSOZihaBwMjen0WUJ6Q4Cqkliyozgoo5pU3db4NvHkZ3vObB_vBLEelsIgimY_N9I659KQ1V-CKA_a1yfblt3UezkZemOsZkzUq1sFDBk9lBOLwmflJibbkQFQMVPJSSDDGLOhKiidaIh7pBJ_HSQ6t_wVcyXM3fiWX302yEfcOMLU3izqYhoxyll_ygWvgCZuKwPBZDXdkS',
+              }}
+              style={styles.leafImage}
+              resizeMode="cover"
+            />
 
-          <View style={styles.cardBody}>
-            <View style={styles.diseaseHeader}>
-              <View style={{ flex: 1 }}>
-                <Text style={[styles.subLabel, { color: theme.colors.textMuted }]}>
-                  {t('diagnosis_label')}
-                </Text>
-                <Text style={[styles.diseaseTitle, { color: theme.colors.text }]}>
-                  {disease}
-                </Text>
-              </View>
-              <View
-                style={[
-                  styles.severityBadge,
-                  {
-                    backgroundColor:
-                      severity === 'High'
-                        ? theme.colors.dangerBg
-                        : severity === 'Low'
-                        ? theme.colors.successBg
-                        : theme.colors.warningBg,
-                  },
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.severityText,
-                    {
-                      color:
-                        severity === 'High'
-                          ? theme.colors.danger
-                          : severity === 'Low'
-                          ? theme.colors.success
-                          : theme.colors.warning,
-                    },
-                  ]}
-                >
-                  {severity} Severity
-                </Text>
-              </View>
+            {/* Bottom-left floating tag */}
+            <View style={styles.floatingLeafTag}>
+              <Text style={styles.leafTagIcon}>🌿</Text>
+              <Text style={styles.leafTagText}>
+                {sampleItem?.crop ? `${sampleItem.crop} Leaf Scan` : 'Cotton Leaf Scan'}
+              </Text>
             </View>
+          </View>
 
-            {/* Confidence Progress Bar */}
-            <View style={styles.confidenceSection}>
-              <View style={styles.confidenceLabelRow}>
-                <Text style={[styles.confidenceLabel, { color: theme.colors.textSecondary }]}>
-                  {t('confidence_label')}
-                </Text>
-                <Text style={[styles.confidenceValue, { color: theme.colors.primary }]}>
-                  {confidence}%
+          {/* Disease Readout */}
+          <View style={styles.cardBody}>
+            <Text style={[styles.diseaseTitle, { color: theme.colors.text }]}>
+              {disease}
+            </Text>
+            <Text style={[styles.diseaseSubtitle, { color: theme.colors.textMuted }]}>
+              {getVernacularTitle(disease)}
+            </Text>
+
+            {/* Severity & Confidence Metric */}
+            <View style={styles.metricContainer}>
+              <View style={styles.metricHeaderRow}>
+                <View style={styles.severityWarningRow}>
+                  <Text style={styles.warningIcon}>⚠️</Text>
+                  <Text style={styles.severityWarningText}>
+                    {severity} • {confidence}% Confidence
+                  </Text>
+                </View>
+                <Text style={[styles.locationText, { color: theme.colors.textMuted }]}>
+                  Nashik, MH
                 </Text>
               </View>
-              <View style={[styles.progressBarBg, { backgroundColor: theme.colors.borderLight }]}>
+
+              {/* Segmented Severity Bar */}
+              <View style={styles.progressBarBackground}>
                 <View
                   style={[
                     styles.progressBarFill,
-                    { width: `${confidence}%`, backgroundColor: theme.colors.primary },
+                    {
+                      width: `${Math.min(100, Math.max(20, confidence * 0.7))}%`,
+                      backgroundColor: theme.colors.secondaryContainer || '#fe932c',
+                    },
                   ]}
                 />
               </View>
             </View>
 
-            {/* Differential Margins Alert if Uncertainty detected */}
-            {analysis.needs_investigation ? (
-              <View style={[styles.uncertaintyAlert, { backgroundColor: theme.colors.warningBg, borderColor: theme.colors.warning }]}>
-                <Text style={styles.alertIcon}>⚠️</Text>
-                <View style={{ flex: 1 }}>
-                  <Text style={[styles.alertHeading, { color: theme.colors.warning }]}>
-                    {t('margin_alert')}
+            {/* Micro-Sachet Banner */}
+            <View style={[styles.sachetCard, { backgroundColor: theme.colors.surfaceContainerLow || '#eff4ff' }]}>
+              <View style={styles.sachetCardLeft}>
+                <View style={[styles.sachetIconCircle, { backgroundColor: '#d3ffd5' }]}>
+                  <Text style={styles.sachetCardEmoji}>💳</Text>
+                </View>
+                <View>
+                  <Text style={[styles.sachetCardTitle, { color: theme.colors.text }]}>
+                    ₹15 Sachet Used
                   </Text>
-                  <Text style={[styles.alertSub, { color: theme.colors.text }]}>
-                    {analysis.investigation_question || t('inv_desc')}
+                  <Text style={[styles.sachetCardSub, { color: theme.colors.textMuted }]}>
+                    Recommended micro-dose packet
                   </Text>
                 </View>
               </View>
-            ) : null}
+
+              <View style={[styles.zeroChargeBadge, { backgroundColor: theme.colors.primaryLight || '#15803d' }]}>
+                <Text style={styles.zeroChargeText}>₹0 Extra Charged</Text>
+              </View>
+            </View>
           </View>
         </View>
 
-        {/* Secondary Investigation Action (if needed) */}
-        {analysis.needs_investigation ? (
-          <View style={[styles.investigationBox, { backgroundColor: theme.colors.primaryBg, borderColor: theme.colors.primary }]}>
-            <Text style={[styles.invTitle, { color: theme.colors.primaryDark }]}>
-              {t('inv_title')}
+        {/* Safe IPM Advisory Card */}
+        <View style={[styles.advisoryCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+          <View style={styles.advisoryHeaderRow}>
+            <Text style={styles.shieldIcon}>🛡️</Text>
+            <Text style={[styles.advisoryTitle, { color: theme.colors.text }]}>
+              Safe IPM Advisory
             </Text>
-            <Text style={[styles.invDesc, { color: theme.colors.text }]}>
-              {t('inv_desc')}
-            </Text>
-            <TouchableOpacity
-              style={[styles.narrowBtn, { backgroundColor: theme.colors.primary }]}
-              onPress={handleNarrowDiagnosis}
-              disabled={isNarrowing}
-            >
-              {isNarrowing ? (
-                <ActivityIndicator color="#fff" size="small" />
-              ) : (
-                <Text style={styles.narrowBtnText}>{t('btn_narrow_diagnosis')}</Text>
-              )}
-            </TouchableOpacity>
           </View>
+
+          {/* Red Do-Not-Spray Banner with thick left red border */}
+          <View style={styles.redWarningBox}>
+            <Text style={styles.blockIcon}>🚫</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.redWarningTitle}>
+                डू नॉट स्प्रे महागडी रसायने
+              </Text>
+              <Text style={styles.redWarningDesc}>
+                Avoid heavy broad-spectrum chemicals immediately. They destroy friendly predatory mites and increase leaf scorch risk.
+              </Text>
+            </View>
+          </View>
+
+          {/* 2-Step Remedial Actions */}
+          <View style={styles.stepCardsList}>
+            <View style={[styles.stepItem, { backgroundColor: theme.colors.surfaceContainerLow || '#eff4ff' }]}>
+              <View style={[styles.stepNumberBadge, { backgroundColor: theme.colors.primary }]}>
+                <Text style={styles.stepNumberText}>1</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.stepTitle, { color: theme.colors.text }]}>
+                  5% NSKE Spray (Neem Seed Kernel Extract)
+                </Text>
+                <Text style={[styles.stepDescription, { color: theme.colors.textSecondary }]}>
+                  Apply uniform foliar mist during early morning hours to disrupt fungal spore germination safely.
+                </Text>
+              </View>
+            </View>
+
+            <View style={[styles.stepItem, { backgroundColor: theme.colors.surfaceContainerLow || '#eff4ff' }]}>
+              <View style={[styles.stepNumberBadge, { backgroundColor: theme.colors.primary }]}>
+                <Text style={styles.stepNumberText}>2</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={[styles.stepTitle, { color: theme.colors.text }]}>
+                  3-Foot Row Drainage Trenching
+                </Text>
+                <Text style={[styles.stepDescription, { color: theme.colors.textSecondary }]}>
+                  Clear excess water channels between plant beds to reduce root-zone humidity and halt spore spread.
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
+        {/* Narrow Diagnosis Secondary Action (if ambiguous) */}
+        {analysis.needs_investigation ? (
+          <TouchableOpacity
+            style={[styles.narrowBtn, { borderColor: theme.colors.primary }]}
+            onPress={handleNarrowDiagnosis}
+            disabled={isNarrowing}
+          >
+            {isNarrowing ? (
+              <ActivityIndicator color={theme.colors.primary} size="small" />
+            ) : (
+              <>
+                <Text style={styles.narrowBtnIcon}>🔬</Text>
+                <Text style={[styles.narrowBtnText, { color: theme.colors.primary }]}>
+                  Leaf Underside Photo (Narrow Diagnosis)
+                </Text>
+              </>
+            )}
+          </TouchableOpacity>
         ) : null}
 
-        {/* Simplified AI Advisory (gpt-oss:120b-cloud Language Layer) */}
-        <View style={[styles.advisoryCard, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-          <View style={styles.advisoryHeader}>
-            <Text style={styles.robotIcon}>🤖</Text>
-            <View>
-              <Text style={[styles.advisoryTitle, { color: theme.colors.text }]}>
-                {t('ai_explanation_title')}
+        {/* Bottom CTA Action Buttons (Exact Reference Match) */}
+        <View style={styles.actionButtonsContainer}>
+          {/* Primary Ask AI Button */}
+          <TouchableOpacity
+            style={[styles.askAiButton, { backgroundColor: theme.colors.secondaryContainer || '#fe932c' }]}
+            onPress={handleAskAssistant}
+          >
+            <Text style={styles.askAiIcon}>💬</Text>
+            <Text style={styles.askAiText}>
+              Ask CultivAI Assistant for Clarification 💬
+            </Text>
+          </TouchableOpacity>
+
+          {/* Secondary 2-Column Buttons */}
+          <View style={styles.splitButtonRow}>
+            <TouchableOpacity
+              style={[styles.expertButton, { backgroundColor: theme.colors.surfaceContainerHigh || '#dce9ff' }]}
+              onPress={handleSendToExpert}
+            >
+              <Text style={styles.btnIconText}>🎓</Text>
+              <Text style={[styles.expertBtnText, { color: theme.colors.text }]}>
+                {escalated ? 'Sent to Expert ✓' : 'Send to Expert'}
               </Text>
-              <Text style={[styles.advisorySubtitle, { color: theme.colors.textMuted }]}>
-                Ollama gpt-oss:120b-cloud · Plain language next step
-              </Text>
-            </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.waButton, { backgroundColor: '#25D366' }]}
+              onPress={handleShareWhatsApp}
+            >
+              <Text style={styles.btnIconText}>📲</Text>
+              <Text style={styles.waBtnText}>Share via WA</Text>
+            </TouchableOpacity>
           </View>
-
-          {loadingAdvisory ? (
-            <View style={styles.advisoryLoadingRow}>
-              <ActivityIndicator size="small" color={theme.colors.primary} />
-              <Text style={[styles.advisoryLoadingText, { color: theme.colors.textSecondary }]}>
-                {t('advisory_loading')}
-              </Text>
-            </View>
-          ) : (
-            <Text style={[styles.advisoryText, { color: theme.colors.text }]}>
-              {aiAdvisory || t('advisory_loading')}
-            </Text>
-          )}
-        </View>
-
-        {/* Persistent What to do / What NOT to do card */}
-        <ActionCard />
-
-        {/* Escalate / Consult Expert Action */}
-        <View style={styles.bottomActions}>
-          <TouchableOpacity
-            style={[
-              styles.escalateBtn,
-              { backgroundColor: escalated ? theme.colors.success : theme.colors.secondary },
-            ]}
-            onPress={handleEscalateToExpert}
-            disabled={escalated}
-          >
-            <Text style={styles.btnIcon}>{escalated ? '✓' : '👨‍🔬'}</Text>
-            <Text style={styles.escalateBtnText}>
-              {escalated ? 'Sent to Dr. Meera Nair' : t('btn_escalate_expert')}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.chatBtn, { borderColor: theme.colors.border }]}
-            onPress={() => navigation.navigate('Chat', { screen: 'ChatDetail', params: { caseId: scanId || 'obs_demo_104' } })}
-          >
-            <Text style={[styles.chatBtnText, { color: theme.colors.text }]}>
-              💬 Open Case Messages
-            </Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -341,193 +336,327 @@ const styles = StyleSheet.create({
   scrollContent: {
     padding: 16,
     paddingBottom: 40,
+    gap: 16,
   },
-  statusRow: {
+  // Top Report Header
+  topReportBar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 12,
   },
-  caseIdText: {
+  reportPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    gap: 6,
+  },
+  verifiedIcon: {
+    color: '#00652c',
+    fontSize: 14,
+    fontWeight: '900',
+  },
+  reportPillText: {
     fontSize: 12,
-    fontWeight: '700',
-    letterSpacing: 0.5,
+    fontWeight: '800',
   },
-  diagnosisCard: {
-    borderRadius: 16,
+  timestampText: {
+    fontSize: 12,
+  },
+  // Diagnostic Card
+  diagnosticCard: {
+    borderRadius: 18,
     borderWidth: 1,
     overflow: 'hidden',
-    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 3,
   },
-  cardImage: {
+  mediaContainer: {
+    position: 'relative',
     width: '100%',
-    height: 160,
+    height: 220,
+    backgroundColor: '#000',
+  },
+  leafImage: {
+    width: '100%',
+    height: '100%',
+  },
+  floatingLeafTag: {
+    position: 'absolute',
+    bottom: 12,
+    left: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 20,
+    gap: 4,
+  },
+  leafTagIcon: {
+    fontSize: 12,
+  },
+  leafTagText: {
+    color: '#00652c',
+    fontSize: 12,
+    fontWeight: '800',
   },
   cardBody: {
     padding: 16,
-  },
-  diseaseHeader: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    marginBottom: 14,
-  },
-  subLabel: {
-    fontSize: 11,
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    marginBottom: 2,
+    gap: 12,
   },
   diseaseTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '800',
   },
-  severityBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
-  },
-  severityText: {
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  confidenceSection: {
-    marginBottom: 12,
-  },
-  confidenceLabelRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 6,
-  },
-  confidenceLabel: {
-    fontSize: 12,
+  diseaseSubtitle: {
+    fontSize: 14,
     fontWeight: '600',
+    marginTop: -4,
   },
-  confidenceValue: {
+  metricContainer: {
+    gap: 6,
+  },
+  metricHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  severityWarningRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  warningIcon: {
+    fontSize: 14,
+  },
+  severityWarningText: {
+    color: '#fe932c',
     fontSize: 13,
     fontWeight: '800',
   },
-  progressBarBg: {
-    height: 7,
+  locationText: {
+    fontSize: 12,
+  },
+  progressBarBackground: {
+    width: '100%',
+    height: 8,
     borderRadius: 4,
+    backgroundColor: '#eff4ff',
     overflow: 'hidden',
   },
   progressBarFill: {
     height: '100%',
     borderRadius: 4,
   },
-  uncertaintyAlert: {
+  sachetCard: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 12,
-    borderRadius: 10,
-    borderWidth: 1,
-    marginTop: 8,
-  },
-  alertIcon: {
-    fontSize: 18,
-    marginRight: 10,
-  },
-  alertHeading: {
-    fontSize: 13,
-    fontWeight: '700',
-    marginBottom: 2,
-  },
-  alertSub: {
-    fontSize: 12,
-    lineHeight: 16,
-  },
-  investigationBox: {
-    padding: 16,
     borderRadius: 14,
-    borderWidth: 1,
-    marginBottom: 16,
+    marginTop: 4,
   },
-  invTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  invDesc: {
-    fontSize: 13,
-    lineHeight: 18,
-    marginBottom: 12,
-  },
-  narrowBtn: {
-    paddingVertical: 12,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  narrowBtnText: {
-    color: '#ffffff',
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  advisoryCard: {
-    padding: 16,
-    borderRadius: 14,
-    borderWidth: 1,
-    marginBottom: 16,
-  },
-  advisoryHeader: {
+  sachetCardLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    gap: 10,
   },
-  robotIcon: {
-    fontSize: 22,
-    marginRight: 10,
+  sachetIconCircle: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  advisoryTitle: {
-    fontSize: 14,
-    fontWeight: '700',
+  sachetCardEmoji: {
+    fontSize: 18,
   },
-  advisorySubtitle: {
+  sachetCardTitle: {
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  sachetCardSub: {
     fontSize: 11,
+    marginTop: 1,
   },
-  advisoryLoadingRow: {
+  zeroChargeBadge: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 20,
+  },
+  zeroChargeText: {
+    color: '#fff',
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  // Advisory Card
+  advisoryCard: {
+    borderRadius: 18,
+    borderWidth: 1,
+    padding: 16,
+    gap: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  advisoryHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    paddingVertical: 6,
   },
-  advisoryLoadingText: {
-    fontSize: 12,
+  shieldIcon: {
+    fontSize: 18,
   },
-  advisoryText: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '500',
+  advisoryTitle: {
+    fontSize: 16,
+    fontWeight: '800',
   },
-  bottomActions: {
-    gap: 10,
-    marginTop: 8,
-  },
-  escalateBtn: {
+  redWarningBox: {
     flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: '#ffdad6',
+    borderLeftWidth: 4,
+    borderLeftColor: '#b20010',
+    borderRadius: 10,
+    padding: 12,
+    gap: 10,
+  },
+  blockIcon: {
+    fontSize: 18,
+    marginTop: 2,
+  },
+  redWarningTitle: {
+    color: '#410002',
+    fontSize: 13,
+    fontWeight: '800',
+    marginBottom: 2,
+  },
+  redWarningDesc: {
+    color: '#410002',
+    fontSize: 12,
+    lineHeight: 17,
+  },
+  stepCardsList: {
+    gap: 10,
+    marginTop: 4,
+  },
+  stepItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    padding: 12,
+    borderRadius: 12,
+    gap: 10,
+  },
+  stepNumberBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 14,
-    borderRadius: 12,
+    marginTop: 2,
   },
-  btnIcon: {
-    fontSize: 16,
-    marginRight: 8,
+  stepNumberText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '900',
   },
-  escalateBtnText: {
-    color: '#ffffff',
-    fontSize: 15,
-    fontWeight: '700',
+  stepTitle: {
+    fontSize: 13,
+    fontWeight: '800',
+    marginBottom: 2,
   },
-  chatBtn: {
+  stepDescription: {
+    fontSize: 12,
+    lineHeight: 17,
+  },
+  // Narrowing Button
+  narrowBtn: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 1.5,
+    borderStyle: 'dashed',
+    gap: 8,
   },
-  chatBtnText: {
+  narrowBtnIcon: {
+    fontSize: 16,
+  },
+  narrowBtnText: {
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  // Bottom Action Buttons
+  actionButtonsContainer: {
+    gap: 10,
+    marginTop: 4,
+  },
+  askAiButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50,
+    borderRadius: 25,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  askAiIcon: {
+    fontSize: 16,
+  },
+  askAiText: {
+    color: '#663500',
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: '800',
+  },
+  splitButtonRow: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  expertButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 48,
+    borderRadius: 24,
+    gap: 6,
+  },
+  expertBtnText: {
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  waButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 48,
+    borderRadius: 24,
+    gap: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  btnIconText: {
+    fontSize: 16,
+  },
+  waBtnText: {
+    color: '#fff',
+    fontSize: 13,
+    fontWeight: '800',
   },
 });

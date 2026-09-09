@@ -8,8 +8,8 @@ from app.routers import (
 )
 
 app = FastAPI(
-    title="KrishiRaksha API",
-    description="AI-Powered Closed-Loop Agricultural Decision-Support Platform (SIH26131)",
+    title="CultivAI API",
+    description="CultivAI: AI-Powered Closed-Loop Agricultural Decision-Support Platform (SIH26131)",
     version="1.0.0",
 )
 

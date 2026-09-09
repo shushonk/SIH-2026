@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "KrishiRaksha",
-    "slug": "krishiraksha",
+    "name": "CultivAI",
+    "slug": "cultivai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,14 +13,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "org.krishiraksha.app"
+      "bundleIdentifier": "org.cultivai.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#059669"
       },
-      "package": "org.krishiraksha.app"
+      "package": "org.cultivai.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"

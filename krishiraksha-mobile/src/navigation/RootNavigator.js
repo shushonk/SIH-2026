@@ -23,19 +23,30 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Scan Stack (Scan -> Result)
+// Feed Stack (Feed -> Result -> Copilot)
+const FeedStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="FeedMain" component={FeedScreen} />
+    <Stack.Screen name="ScanResult" component={ScanResultScreen} />
+    <Stack.Screen name="Copilot" component={CopilotScreen} />
+  </Stack.Navigator>
+);
+
+// Scan Stack (Scan -> Result -> Copilot)
 const ScanStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="ScanMain" component={ScanScreen} />
     <Stack.Screen name="ScanResult" component={ScanResultScreen} />
+    <Stack.Screen name="Copilot" component={CopilotScreen} />
   </Stack.Navigator>
 );
 
-// Chat Stack (Threads -> Detail)
+// Chat Stack (Threads -> Detail & Copilot)
 const ChatStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="ChatThreads" component={ChatThreadsScreen} />
     <Stack.Screen name="ChatDetail" component={ChatDetailScreen} />
+    <Stack.Screen name="Copilot" component={CopilotScreen} />
   </Stack.Navigator>
 );
 
@@ -65,7 +76,7 @@ const FarmerTabNavigator = () => {
     >
       <Tab.Screen
         name="Feed"
-        component={FeedScreen}
+        component={FeedStack}
         options={{
           tabBarLabel: t('tab_feed'),
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>📰</Text>,
@@ -141,7 +152,7 @@ const ExpertTabNavigator = () => {
       />
       <Tab.Screen
         name="Feed"
-        component={FeedScreen}
+        component={FeedStack}
         options={{
           tabBarLabel: t('tab_feed'),
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>📰</Text>,
@@ -197,7 +208,7 @@ const OfficerTabNavigator = () => {
       />
       <Tab.Screen
         name="Feed"
-        component={FeedScreen}
+        component={FeedStack}
         options={{
           tabBarLabel: t('tab_feed'),
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>📰</Text>,
@@ -269,7 +280,7 @@ const AdminTabNavigator = () => {
       />
       <Tab.Screen
         name="Feed"
-        component={FeedScreen}
+        component={FeedStack}
         options={{
           tabBarLabel: t('tab_feed'),
           tabBarIcon: ({ color }) => <Text style={{ fontSize: 20 }}>📰</Text>,

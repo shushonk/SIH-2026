@@ -1,0 +1,668 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-container": "#663500",
+          "surface-tint": "#006d30",
+          "error": "#ba1a1a",
+          "background": "#f8f9ff",
+          "tertiary-container": "#676f86",
+          "on-primary": "#ffffff",
+          "surface-bright": "#f8f9ff",
+          "surface-container": "#e5eeff",
+          "primary-fixed-dim": "#79db8d",
+          "secondary": "#904d00",
+          "on-error": "#ffffff",
+          "surface-variant": "#d3e4fe",
+          "inverse-surface": "#213145",
+          "on-primary-fixed": "#00210a",
+          "surface": "#f8f9ff",
+          "primary-container": "#15803d",
+          "on-tertiary-fixed": "#131b2e",
+          "on-background": "#0b1c30",
+          "on-surface-variant": "#3f493f",
+          "tertiary": "#4f576d",
+          "primary-fixed": "#95f8a7",
+          "surface-container-high": "#dce9ff",
+          "inverse-primary": "#79db8d",
+          "on-secondary-fixed-variant": "#6e3900",
+          "secondary-container": "#fe932c",
+          "on-secondary-fixed": "#2f1500",
+          "secondary-fixed": "#ffdcc3",
+          "surface-dim": "#cbdbf5",
+          "primary": "#00652c",
+          "outline": "#6f7a6e",
+          "tertiary-fixed": "#dae2fd",
+          "surface-container-highest": "#d3e4fe",
+          "surface-container-low": "#eff4ff",
+          "on-tertiary-container": "#f2f3ff",
+          "on-error-container": "#93000a",
+          "tertiary-fixed-dim": "#bec6e0",
+          "on-tertiary-fixed-variant": "#3f465c",
+          "on-primary-container": "#d3ffd5",
+          "inverse-on-surface": "#eaf1ff",
+          "secondary-fixed-dim": "#ffb77d",
+          "outline-variant": "#becabc",
+          "surface-container-lowest": "#ffffff",
+          "on-surface": "#0b1c30",
+          "on-primary-fixed-variant": "#005323",
+          "error-container": "#ffdad6",
+          "on-tertiary": "#ffffff",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "gutter-desktop": "1.5rem",
+          "space-sm": "0.75rem",
+          "margin-mobile": "1rem",
+          "space-2xs": "0.25rem",
+          "margin-tablet": "2rem",
+          "space-lg": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-3xl": "4rem",
+          "space-md": "1rem",
+          "space-2xl": "3rem",
+          "margin-desktop": "3rem",
+          "space-xs": "0.5rem"
+        },
+        "fontFamily": {
+          "display-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Inter"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "display-lg-mobile": ["Plus Jakarta Sans"],
+          "label-sm": ["Inter"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "body-md": ["Inter"],
+          "label-md": ["Inter"],
+          "code-data": ["Inter"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "metric-stat": ["Plus Jakarta Sans"],
+          "body-lg": ["Inter"],
+          "headline-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+          "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+          "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.03em", "fontWeight": "600" }],
+          "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+          "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+          "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+          "code-data": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }],
+          "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "metric-stat": ["2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+          "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="KrishiRaksha Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U_9xye5kB8Cd_pki_eOOj0oyl2EOxO4rZjf-gUAptmcmj1zUijMGwChCDa4BrEYGD8E7HWPLri-L_-RF9UoYuTysM3PTANcIRzdcaeqyeWSwERX-cGoCAqkuXPfLbZ7l-brSkbhGM7A1zaM5ZM3D81oGS60C8qk0OXIhKQHftx6WZabejjd_djjTsWtniWBL81aSeTc1pig6rqtb34Vw59kxJgVM3b-qW1ELj876iyW8CJQAy208xcoec"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">CultivAI</span><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">SIH26131</span></div><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-xl" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="farmer-portal" href="#">Farmer Portal</a><a aria-current="page" class="px-space-md py-1.5 transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="expert-desk" href="#">Expert Desk</a><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="district-surveillance-map" href="#">District Surveillance Map</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-lowest border border-outline-variant/50"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface">Online (Sync Active)</span></div><div class="hidden md:flex items-center px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="font-semibold text-on-surface mr-1">Role:</span> Farmer / Officer</div><div class="flex items-center gap-1 px-space-xs py-1 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined text-base">translate</span><span class="font-medium">मराठी (Marathi)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-xl">light_mode</span></button><div class="flex items-center pl-space-2xs border-l border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJuNIGd4mb5-jLWJaRaypNrgF0eA-_ZFFzK4kxcHk9jy3ujEcDx2dLjcBprwhrWGCx8bAYzC8IY2e-dqXwZe9mQBpsCZZ2ex2GRVt0DGENShwz2yPR-HiPOjl09fSnRBa40gafoE8bnp9DOAuNjZPe3SjkLnE1I077sSgKtgACKuQgCRgrOVdJmBeeReRPLqZCnUPLBsMF9A2UA89XsmAeS9UkCmjNp_Wi58jKs_VE4TvjWeTK9SkT"></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 hidden md:flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Epidemiological Hub</span></div><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="field-triage-queue" href="#"><span class="material-symbols-outlined text-xl">biotech</span><span class="font-label-md text-label-md">Specimen Triage</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="pest-outbreak-registry" href="#"><span class="material-symbols-outlined text-xl">pest_control</span><span class="font-label-md text-label-md">Pathogen Registry</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="clinical-advisories" href="#"><span class="material-symbols-outlined text-xl">broadcast_on_personal</span><span class="font-label-md text-label-md">Clinical Advisories</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="taluk-telemetry-reports" href="#"><span class="material-symbols-outlined text-xl">analytics</span><span class="font-label-md text-label-md">Taluk Telemetry</span></a></nav></div><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface font-semibold">Field Gateway</span><span class="font-code-data text-code-data text-primary">v2.4-SIH</span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Maharashtra Taluk Grid</span></div></aside><div class="md:pl-64"><main class="relative pt-16 bg-surface min-h-screen w-full px-gutter-desktop py-space-xl"><div class="flex flex-col w-full">
+<!-- Command Toolbar & Macro Triage Filter Bar -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md mb-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="p-2.5 bg-primary-container text-on-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">science</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface">CultivAI Expert Desk</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+              Level-3 Agronomist Panel
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central Agricultural University &amp; Regional Epidemiology Validation Unit</p>
+</div>
+</div>
+<!-- Quick Status Badges and Counter -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+<span class="font-semibold">12 Pending Scans</span> requiring validation
+        </div>
+<div class="flex items-center gap-space-2xs px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base text-primary">timer</span>
+<span class="">SLA Target: &lt; 20m</span>
+</div>
+</div>
+</div>
+<!-- Micro Filter Strip -->
+<div class="flex flex-wrap items-center justify-between gap-space-md mt-space-md pt-space-sm bg-surface-container-low/60 rounded-lg p-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-base text-primary">psychiatry</span>
+<span class="font-semibold">Crops:</span>
+<span class="">All Crops (Cotton, Soybean, Grapes)</span>
+<span class="material-symbols-outlined text-xs text-outline">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-base text-secondary">explore</span>
+<span class="font-semibold">District:</span>
+<span class="">Akola / Nagpur</span>
+<span class="material-symbols-outlined text-xs text-outline">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-lg bg-error-container text-on-error-container font-label-sm text-label-sm cursor-pointer font-medium">
+<span class="material-symbols-outlined text-base">emergency</span>
+<span class="">Urgency: Critical</span>
+<span class="material-symbols-outlined text-xs">close</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Live Dispatch Stream:</span>
+<span class="font-code-data text-code-data text-primary px-2 py-0.5 rounded bg-surface-container-lowest font-semibold">GRID-MH-ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- Primary Asymmetric Split Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Triage Queue (35% -> 4 cols on xl / 5 cols on lg) -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">dataset</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Specimen Queue</h2>
+</div>
+<span class="font-code-data text-code-data text-outline">AI Conf &lt;85%</span>
+</div>
+<!-- Filter Segment Tabs -->
+<div class="flex items-center gap-1 p-1 bg-surface-container-low rounded-lg">
+<button class="flex-1 py-1.5 px-2 text-center rounded-md font-label-sm text-label-sm transition-all bg-primary text-on-primary font-semibold shadow-sm" id="tab-all">
+            All (12)
+          </button>
+<button class="flex-1 py-1.5 px-2 text-center rounded-md font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface font-medium" id="tab-urgency">
+            High Urgency (4)
+          </button>
+<button class="flex-1 py-1.5 px-2 text-center rounded-md font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface font-medium" id="tab-outbreak">
+            Outbreak (3)
+          </button>
+</div>
+<!-- Queue Cards List -->
+<div class="flex flex-col gap-space-sm max-h-[780px] overflow-y-auto pr-1">
+<!-- Card 1: ACTIVE / SELECTED -->
+<div class="relative group cursor-pointer p-space-sm rounded-xl bg-surface-container-low shadow-sm transition-all">
+<div class="absolute left-0 top-3 bottom-3 w-1.5 rounded-r-full bg-primary"></div>
+<div class="flex items-start gap-space-sm pl-1">
+<div class="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Close-up macro shot of a green cotton boll infested by pink bollworm with small necrotic entrance holes and slight pinkish frass staining in bright sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS3Onh8OJJHFvu3oR04UsGK7wQHQbI8kB3jOdfvEE4cgSVA5-QX0yBb8aXGbswJIqjWLaAcASmxoCQEyrVYWAqKHaIpDQajCBfvsw-LUnb4Y4A3uGwxOl2YMrN43PPCZmYrX01ZOhhVpTmkwPZ7SBVU2E7lAGmwqPQ9_Lzv5jJF5WV4-TfScae60zeWeeNP1nP6O03gFVyfzd1417JZ3kAs4PlWOHDnyEX1D4xHFqQGGtl6WGp7uiw">
+<span class="absolute bottom-0 inset-x-0 bg-inverse-surface/80 text-inverse-on-surface text-[10px] text-center font-code-data font-semibold">CAM-01</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-headline-sm text-base text-on-surface truncate">Cotton (कपाशी)</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold whitespace-nowrap">
+                    SEVERE (78% AI)
+                  </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-sm text-outline">location_on</span>
+<span class="truncate">Akola (Murtizapur)</span>
+</div>
+<div class="flex items-center justify-between text-outline font-code-data text-code-data mt-2">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                    12m ago
+                  </span>
+<span class="text-primary font-semibold">#MH-8942</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Soybean -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-all">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Agricultural laboratory photo of a soybean leaf exhibiting irregular chlorotic yellow mosaic patterning and puckered leaf veins on agricultural soil backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcATC1V6XOT3e2hGRMYlzCtS4x7aj3tRY8wGJM2JX2g2tAXYFaKWggpJVS2rpMgdeHEDzx4C7o61pdQJJrd6KT6eg6yakyWvaXwNxEdFMBagypdNy-uznvPfDmr2Zg6syVsnom05U8vyNlYrr9m34TXqBU6V4pn8orNUtw0kAcFsG-xxtsnQ6CBfU_IFN1ICaRWb2GneVCDy4NOMrma2cll768-4pLZ1BPMKcjwblIELOOs9rgIFF3">
+<span class="absolute bottom-0 inset-x-0 bg-inverse-surface/80 text-inverse-on-surface text-[10px] text-center font-code-data font-semibold">CAM-02</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-headline-sm text-base text-on-surface truncate">Soybean (सोयाबीन)</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold whitespace-nowrap">
+                    MODERATE (82%)
+                  </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-sm text-outline">location_on</span>
+<span class="truncate">Nagpur (Katol)</span>
+</div>
+<div class="flex items-center justify-between text-outline font-code-data text-code-data mt-2">
+<span class="">28m ago</span>
+<span class="">#MH-8939</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Grapes -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-all">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="High magnification inspection shot of grapevine clusters covered in powdery grayish-white fungal mycelium of powdery mildew in vineyard daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjG-SFDZbwysE8PadDNtbnmUPs2opNz2gZUwya31HaEi9Ot279Y8wsNxcRHJiTpt0JJcAnUyaI-7ZsmN_DicxrC9XC4jaRjpdAoN56Dc-bU-Vkdx7STovSHiRm0nR6V73yg9efxOBbT3wCK7YNJXkRaw2ilFRGXoJIEiGbVvOGn7xwcV9XtFhE_9go26FXSvLZk5LHHT2NpREYU0Drk1x50qDakt5CjxvFc9GqjFimy1ZyWMHM4df_">
+<span class="absolute bottom-0 inset-x-0 bg-inverse-surface/80 text-inverse-on-surface text-[10px] text-center font-code-data font-semibold">CAM-03</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-headline-sm text-base text-on-surface truncate">Grapes (द्राक्षे)</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold whitespace-nowrap">
+                    MODERATE (80%)
+                  </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-sm text-outline">location_on</span>
+<span class="truncate">Nashik (Dindori)</span>
+</div>
+<div class="flex items-center justify-between text-outline font-code-data text-code-data mt-2">
+<span class="">45m ago</span>
+<span class="">#MH-8931</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: Pomegranate -->
+<div class="group cursor-pointer p-space-sm rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-all">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Detailed agricultural diagnostic view of pomegranate fruit with dark brown water-soaked angular bacterial blight spots cracking open under orchard sun." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArjZF2eqNX9HrRa2qMRumSmjAij7BpCPtzcsCg8xPst_HuNHGNYOV4Uz7iwo3p44qE9bc7a2QsbNl_PfPGxjwxNXjOEZQqZv9PmGpBiCS7PX3hkEruIw0YjIaKmmHENv9jq5MQQQoAQ_CEmqGgkypBPl4VE4Sg_y_1MgOQ6ECfhqv5IL46wPRBseMoqicrLPQri-QV6iobX6XcSbxnc05HLkswfhs2ROZ1RqJDIwnhR_FBpFeQTfNs">
+<span class="absolute bottom-0 inset-x-0 bg-inverse-surface/80 text-inverse-on-surface text-[10px] text-center font-code-data font-semibold">CAM-04</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-headline-sm text-base text-on-surface truncate">Pomegranate (डाळिंब)</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold whitespace-nowrap">
+                    SEVERE (72%)
+                  </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+<span class="material-symbols-outlined text-sm text-outline">location_on</span>
+<span class="truncate">Solapur (Pandharpur)</span>
+</div>
+<div class="flex items-center justify-between text-outline font-code-data text-code-data mt-2">
+<span class="">1h ago</span>
+<span class="">#MH-8924</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetry Sync Status Indicator -->
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">cloud_sync</span>
+<span class="">Edge AI Sync Buffer</span>
+</div>
+<span class="font-code-data text-code-data font-semibold text-on-surface">32 Nodes Active</span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Detailed Clinical Review Dossier (65% -> 8 cols on xl / 7 cols on lg) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Case Dossier Header -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-code-data text-code-data text-primary px-2.5 py-1 rounded bg-primary-fixed text-on-primary-fixed font-bold">
+                CASE #MH-2026-8942
+              </span>
+<span class="font-headline-lg text-headline-lg text-on-surface">Akola District Specimen (Cotton)</span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1 font-medium text-on-surface">
+<span class="material-symbols-outlined text-base text-outline">person</span>
+                Tukaram Patil
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-outline">home_pin</span>
+                Village: Sirso (Murtizapur Taluk)
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-outline">calendar_today</span>
+                Captured: 14 Oct 2026, 10:42 AM
+              </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold tracking-wide uppercase">
+              Field Triage Priority 1
+            </span>
+</div>
+</div>
+<!-- High-Res Inspection Canvas + Grad-CAM AI Heatmap Switch -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Specimen Visual Box with Overlay -->
+<div class="md:col-span-7 relative rounded-xl overflow-hidden bg-inverse-surface min-h-[340px] flex flex-col justify-between p-space-sm group">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="High resolution agronomist specimen photo of an infected cotton flower and nascent green boll showing tiny pinpoint entry holes, bollworm frass residue, and necrotic bract edges under natural field lighting." id="specimen-photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOuWTO6E-BITbIvbri-d9jM5s98M6lr_8Z4Mjw7bM9vXmkcp8-qacASXFbDbP1IKfTMwcUmTut-iwq_znykCjIHMRsmE4ZzklCSYnyKm1_fupZxyrzFWWYO3-6I0DjPQ5vHDeFJfizMpog1VkxjpC0wE-rdoDrMAgA0gjG2Y6qnX04YIUYsi7HqfG6LRbIwt02LnpUWDP6au8n7V3uMusmyF0lALuntStvkr9PF0rEiec-6eFTgGE0">
+<!-- Grad-CAM Synthetic Heatmap Layer (Toggled via JS) -->
+<div class="absolute inset-0 bg-gradient-to-tr from-error/40 via-secondary-container/40 to-transparent mix-blend-color-dodge transition-opacity duration-300 pointer-events-none opacity-90" id="gradcam-layer"></div>
+<!-- Floating Top Controls -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-space-xs py-1 rounded-md bg-inverse-surface/85 backdrop-blur-md text-inverse-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-primary-fixed">biotech</span>
+<span class="">Spatial Bounding Box: [X: 142, Y: 88, W: 64, H: 64]</span>
+</div>
+<button class="flex items-center gap-1 px-space-sm py-1 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shadow hover:bg-surface-container transition-colors" id="toggle-gradcam">
+<span class="material-symbols-outlined text-base text-primary">visibility</span>
+<span id="gradcam-label" class="">Grad-CAM: ON</span>
+</button>
+</div>
+<!-- Heatmap Focal Point Annotation -->
+<div class="relative z-10 self-center my-auto p-2 border-2 border-dashed border-error bg-error/10 rounded-lg backdrop-blur-xs flex flex-col items-center animate-pulse">
+<span class="font-code-data text-code-data text-on-primary bg-error px-1.5 py-0.5 rounded font-bold">
+                PBW Entry Bore: 94.2% Activation
+              </span>
+</div>
+<!-- Bottom Specimen Barcode & Resolution -->
+<div class="relative z-10 flex items-center justify-between text-[11px] font-code-data text-inverse-on-surface bg-inverse-surface/80 px-2 py-1 rounded-md backdrop-blur-sm">
+<span class="">Sensor: SONY IMX586 (48MP RAW)</span>
+<span class="">Optical Mag: 3.4x Digital Lens</span>
+</div>
+</div>
+<!-- Micro-Telemetry Cluster -->
+<div class="md:col-span-5 flex flex-col justify-between gap-space-sm">
+<!-- Telemetry Card 1: Pheromone Trap -->
+<div class="p-space-sm rounded-xl bg-error-container/40 flex flex-col justify-between flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-error-container uppercase">Pheromone Trap Count</span>
+<span class="material-symbols-outlined text-error text-xl">pest_control_rodent</span>
+</div>
+<div class="my-1">
+<div class="font-metric-stat text-metric-stat text-on-error-container leading-none">18 <span class="font-headline-sm text-headline-sm">pests/trap</span></div>
+<div class="font-body-sm text-body-sm text-error font-medium mt-1">High threshold breach (ETL: 8/trap)</div>
+</div>
+<div class="w-full bg-error/20 rounded-full h-1.5 overflow-hidden">
+<div class="bg-error h-full rounded-full w-[85%]"></div>
+</div>
+</div>
+<!-- Telemetry Card 2: Soil Moisture -->
+<div class="p-space-sm rounded-xl bg-surface-container flex flex-col justify-between flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase">Soil Root Moisture</span>
+<span class="material-symbols-outlined text-primary text-xl">water_drop</span>
+</div>
+<div class="my-1">
+<div class="font-headline-xl text-headline-xl text-on-surface leading-none">24% <span class="font-label-md text-label-md font-normal text-on-surface-variant">Volumetric</span></div>
+<div class="font-body-sm text-body-sm text-primary font-medium mt-1">Optimum cotton boll filling range</div>
+</div>
+<div class="w-full bg-outline-variant/30 rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[65%]"></div>
+</div>
+</div>
+<!-- Telemetry Card 3: Weather -->
+<div class="p-space-sm rounded-xl bg-surface-container flex flex-col justify-between flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase">IMD Akola AWS Telemetry</span>
+<span class="material-symbols-outlined text-secondary text-xl">air</span>
+</div>
+<div class="my-1">
+<div class="font-headline-lg text-headline-lg text-on-surface leading-none">84% RH <span class="text-base text-on-surface-variant">| 29°C</span></div>
+<div class="font-body-sm text-body-sm text-secondary font-medium mt-1">Favorable for secondary fungal rots</div>
+</div>
+<div class="flex items-center gap-2 text-outline font-code-data text-[10px]">
+<span class="">Station: Murtizapur #41</span>
+<span class="">•</span>
+<span class="">Refreshed: 6m ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Clinical Diagnostics & Uncertainty Breakdown Box -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">psychology</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Neural Diagnostic Prediction Engine</span>
+</div>
+<span class="font-label-sm text-label-sm text-error bg-error-container px-2 py-0.5 rounded font-semibold">
+              Confidence Below 85% Auto-Approval Threshold
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center mt-1">
+<div class="md:col-span-8 flex flex-col gap-1.5">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-lg text-on-surface font-bold">Pink Bollworm</span>
+<span class="font-body-sm text-body-sm italic text-on-surface-variant">(Pectinophora gossypiella)</span>
+<span class="font-code-data text-code-data text-error font-bold ml-auto sm:ml-0">78% Match</span>
+</div>
+<!-- Probability Bar Comparison -->
+<div class="w-full bg-surface-container-high rounded-lg h-3 overflow-hidden flex">
+<div class="bg-error h-full" style="width: 78%;" title="Pink Bollworm 78%"></div>
+<div class="bg-secondary-container h-full" style="width: 14%;" title="American Bollworm 14%"></div>
+<div class="bg-outline-variant h-full" style="width: 8%;" title="Other 8%"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-data text-code-data">
+<span class="">Secondary: American Bollworm (Helicoverpa) — 14%</span>
+<span class="">Spodoptera / General — 8%</span>
+</div>
+<div class="mt-2 p-space-xs rounded bg-surface-container-lowest text-on-surface font-body-sm text-body-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-base text-secondary mt-0.5">info</span>
+<span class=""><strong>Anomaly Trigger:</strong> Uncharacteristic feeding bore pattern on outer bract paired with rapid surge in taluk pheromone trap telemetry. Expert manual confirmation required before state-wide alert trigger.</span>
+</div>
+</div>
+<!-- Mini Outbreak Heat Vector Chart -->
+<div class="md:col-span-4 p-space-sm bg-surface-container-lowest rounded-lg flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Taluk Cluster Spread</span>
+<div class="my-2 relative flex items-center justify-center">
+<!-- Inline SVG Outbreak Ring -->
+<svg class="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-error" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="74, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-on-surface">
+<span class="font-headline-sm text-sm font-bold text-error">74%</span>
+<span class="text-[9px] uppercase font-label-sm text-outline">Risk Vector</span>
+</div>
+</div>
+<span class="font-body-sm text-body-sm text-error font-medium">9 Farms within 3km flagged</span>
+</div>
+</div>
+</div>
+<!-- Agronomist Action Button Row -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<button class="flex-1 min-w-[180px] h-11 px-space-md rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 shadow-sm transition-colors" id="btn-approve">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+<span class="">Approve AI Verdict</span>
+</button>
+<button class="flex-1 min-w-[180px] h-11 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors" id="btn-override">
+<span class="material-symbols-outlined text-xl text-secondary">edit_note</span>
+<span class="">Revise / Override Diagnosis</span>
+</button>
+<button class="h-11 px-space-md rounded-lg bg-error hover:bg-on-error-container text-on-error font-label-md text-label-md font-bold flex items-center justify-center gap-2 shadow-sm transition-all" id="btn-flag-outbreak">
+<span class="material-symbols-outlined text-xl animate-pulse">crisis_alert</span>
+<span class="">Flag Regional Outbreak</span>
+</button>
+</div>
+</div>
+<!-- Advisory Prescription Composer -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Agronomist Clinical Prescription</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Validated IPM advisory delivered instantly to Tukaram Patil's registered mobile via CultivAI SMS &amp; Audio Gateway</p>
+</div>
+<span class="font-code-data text-code-data px-2 py-1 rounded bg-surface-container text-on-surface-variant font-medium">
+            Template: C-PBW-IPM-MAH
+          </span>
+</div>
+<!-- Preset Quick Prescriptions Tags -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Recommended Quick Prescriptions:</span>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="preset-tag px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors flex items-center gap-1" data-snippet="Spray Emamectin Benzoate 5% SG @ 5g per 10L water immediately.">
+<span class="material-symbols-outlined text-xs text-primary">add</span>
+<span class="">+ Emamectin Benzoate 5% SG</span>
+</button>
+<button class="preset-tag px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors flex items-center gap-1" data-snippet="Install Gossyplure pheromone lures @ 5 traps/acre for mass trapping.">
+<span class="material-symbols-outlined text-xs text-primary">add</span>
+<span class="">+ Pheromone Lure Replacement</span>
+</button>
+<button class="preset-tag px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors flex items-center gap-1" data-snippet="Release Trichogramma bactrae egg parasitoid cards @ 60,000/acre.">
+<span class="material-symbols-outlined text-xs text-primary">add</span>
+<span class="">+ Trichogramma Cards release</span>
+</button>
+<button class="preset-tag px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors flex items-center gap-1" data-snippet="Destroy rosette flowers and pick dropped bolls immediately.">
+<span class="material-symbols-outlined text-xs text-primary">add</span>
+<span class="">+ Cultural Sanitization</span>
+</button>
+</div>
+</div>
+<!-- Rich Text Area -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-medium flex items-center justify-between" for="advisory-text">
+<span class="">Expert Directive &amp; Field Advisory (Dual English / Marathi SMS Ready)</span>
+<span class="text-primary font-code-data text-code-data cursor-pointer hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">g_translate</span> Auto-Translate to Marathi
+            </span>
+</label>
+<textarea class="w-full p-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none transition-shadow placeholder-outline shadow-inner resize-y" id="advisory-text" rows="4">शेतात गुलाबी बोंडअळीचा (Pink Bollworm) प्रादुर्भाव आढळला आहे. तात्काळ प्रति एकर ५ कामगंध सापळे लावावेत. प्रादुर्भाव वाढल्यास इमामेक्टिन बेंझोएट ५% एसजी ५ ग्रॅम प्रति १० लिटर पाण्यात मिसळून फवारावे.</textarea>
+</div>
+<!-- Action & SMS Length Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-md bg-surface-container text-on-surface-variant font-code-data text-code-data">
+<span class="material-symbols-outlined text-sm text-primary">sms</span>
+<span class="font-semibold text-on-surface" id="char-counter">142</span> / 160 characters (1 Marathi SMS Unit)
+            </div>
+<span class="text-primary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Farmer IVR Hooked
+            </span>
+</div>
+<button class="h-12 px-space-lg rounded-xl bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shadow-md transition-all" id="btn-send-advisory">
+<span class="material-symbols-outlined text-xl">send</span>
+<span class="">Send Verified Advisory to Farmer's Phone</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initExpertDesk() {
+    // Grad-CAM Toggle logic
+    const toggleGradcamBtn = document.getElementById('toggle-gradcam');
+    const gradcamLayer = document.getElementById('gradcam-layer');
+    const gradcamLabel = document.getElementById('gradcam-label');
+    let isGradcamActive = true;
+
+    if (toggleGradcamBtn && gradcamLayer && gradcamLabel) {
+      toggleGradcamBtn.addEventListener('click', () => {
+        isGradcamActive = !isGradcamActive;
+        if (isGradcamActive) {
+          gradcamLayer.style.opacity = '0.9';
+          gradcamLabel.textContent = 'Grad-CAM: ON';
+          toggleGradcamBtn.classList.remove('bg-surface-container');
+          toggleGradcamBtn.classList.add('bg-surface-container-lowest');
+        } else {
+          gradcamLayer.style.opacity = '0';
+          gradcamLabel.textContent = 'Grad-CAM: OFF';
+          toggleGradcamBtn.classList.remove('bg-surface-container-lowest');
+          toggleGradcamBtn.classList.add('bg-surface-container');
+        }
+      });
+    }
+
+    // Snippet addition to advisory
+    const textarea = document.getElementById('advisory-text');
+    const charCounter = document.getElementById('char-counter');
+    const presetButtons = document.querySelectorAll('.preset-tag');
+
+    function updateCounter() {
+      if (textarea && charCounter) {
+        const len = textarea.value.length;
+        charCounter.textContent = len;
+        if (len > 160) {
+          charCounter.classList.add('text-error');
+        } else {
+          charCounter.classList.remove('text-error');
+        }
+      }
+    }
+
+    if (textarea) {
+      textarea.addEventListener('input', updateCounter);
+    }
+
+    presetButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const snippet = btn.getAttribute('data-snippet');
+        if (textarea && snippet) {
+          textarea.value += (textarea.value ? '\n' : '') + snippet;
+          updateCounter();
+          textarea.focus();
+        }
+      });
+    });
+
+    // Button interactions
+    const btnApprove = document.getElementById('btn-approve');
+    const btnOverride = document.getElementById('btn-override');
+    const btnFlag = document.getElementById('btn-flag-outbreak');
+    const btnSend = document.getElementById('btn-send-advisory');
+
+    if (btnApprove) {
+      btnApprove.addEventListener('click', () => {
+        btnApprove.innerHTML = '<span class="material-symbols-outlined text-xl">done_all</span><span>Verdict Approved</span>';
+        btnApprove.classList.add('bg-primary');
+      });
+    }
+
+    if (btnOverride) {
+      btnOverride.addEventListener('click', () => {
+        const newDiag = prompt('Enter agronomist override diagnosis code or name:', 'American Bollworm (Helicoverpa armigera)');
+        if (newDiag && textarea) {
+          textarea.value = `[Agronomist Revised Diagnosis: ${newDiag}]\n` + textarea.value;
+          updateCounter();
+        }
+      });
+    }
+
+    if (btnFlag) {
+      btnFlag.addEventListener('click', () => {
+        if (confirm('Broadcast Outbreak Warning for Akola / Murtizapur Taluk (Pheromone count >18)?')) {
+          btnFlag.innerHTML = '<span class="material-symbols-outlined text-xl">broadcast_on_personal</span><span>Outbreak Broadcasted</span>';
+          btnFlag.classList.add('bg-on-error-container');
+        }
+      });
+    }
+
+    if (btnSend) {
+      btnSend.addEventListener('click', () => {
+        btnSend.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">sync</span><span>Transmitting SMS...</span>';
+        setTimeout(() => {
+          btnSend.innerHTML = '<span class="material-symbols-outlined text-xl">verified</span><span>Prescription Dispatched to Farmer!</span>';
+          btnSend.classList.add('bg-primary-container');
+        }, 800);
+      });
+    }
+
+    // Simple queue tab switcher
+    const tabAll = document.getElementById('tab-all');
+    const tabUrgency = document.getElementById('tab-urgency');
+    const tabOutbreak = document.getElementById('tab-outbreak');
+    const tabs = [tabAll, tabUrgency, tabOutbreak];
+
+    tabs.forEach(t => {
+      if (!t) return;
+      t.addEventListener('click', () => {
+        tabs.forEach(item => {
+          if (!item) return;
+          item.className = 'flex-1 py-1.5 px-2 text-center rounded-md font-label-sm text-label-sm transition-all text-on-surface-variant hover:text-on-surface font-medium';
+        });
+        t.className = 'flex-1 py-1.5 px-2 text-center rounded-md font-label-sm text-label-sm transition-all bg-primary text-on-primary font-semibold shadow-sm';
+      });
+    });
+  })();
+</script></main></div>
+
+</body></html>

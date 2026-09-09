@@ -1,35 +1,41 @@
-// Unified Design Tokens for KrishiRaksha Mobile
+// Unified Design Tokens for CultivAI Mobile (from Agritech System DESIGN.md)
 
 export const lightTheme = {
   mode: 'light',
   colors: {
-    primary: '#059669',        // Emerald 600
-    primaryLight: '#10b981',   // Emerald 500
-    primaryDark: '#047857',    // Emerald 700
-    primaryBg: '#ecfdf5',      // Emerald 50
-    secondary: '#0284c7',      // Sky 600
-    accent: '#d97706',         // Amber 600
-    background: '#f8fafc',     // Slate 50
+    primary: '#00652c',        // Deep Botanical Green
+    primaryLight: '#15803d',   // Primary Container Green
+    primaryDark: '#004c1f',    // Deep Forest Green
+    primaryBg: '#eff7f1',      // Tinted Green Background
+    secondary: '#904d00',      // Earth Amber
+    secondaryContainer: '#fe932c', // Harvest Amber
+    accent: '#fe932c',         // Harvest Amber
+    tertiary: '#b20010',       // Outbreak Alert Red
+    background: '#f8f9ff',     // Surface Soft Slate
     card: '#ffffff',
     surface: '#ffffff',
-    text: '#0f172a',           // Slate 900
-    textSecondary: '#475569',  // Slate 600
-    textMuted: '#94a3b8',      // Slate 400
-    border: '#e2e8f0',         // Slate 200
-    borderLight: '#f1f5f9',    // Slate 100
-    danger: '#dc2626',         // Red 600
-    dangerBg: '#fef2f2',
-    warning: '#d97706',        // Amber 600
-    warningBg: '#fffbeb',
-    success: '#16a34a',        // Green 600
-    successBg: '#f0fdf4',
+    surfaceContainerLow: '#eff4ff',
+    surfaceContainer: '#e5eeff',
+    surfaceContainerHigh: '#dce9ff',
+    text: '#0b1c30',           // Deep Slate On-Surface
+    textSecondary: '#3f493f',  // Medium On-Surface Variant
+    textMuted: '#6f7a6e',      // Slate Outline
+    border: '#becabc',         // Outline Variant
+    borderLight: '#e2e8f0',    // Slate 100
+    danger: '#b20010',         // Tertiary Alert Red
+    dangerBg: '#ffdad6',       // Tertiary Fixed Container
+    warning: '#fe932c',        // Harvest Amber Warning
+    warningBg: '#fff3e0',
+    success: '#00652c',        // Vitality Green
+    successBg: '#e8f5e9',
+    whatsapp: '#25D366',       // Official WhatsApp Green
     tabBarBg: '#ffffff',
     tabBarBorder: '#e2e8f0',
-    tabBarActive: '#059669',
-    tabBarInactive: '#94a3b8',
+    tabBarActive: '#00652c',
+    tabBarInactive: '#6f7a6e',
     statusBar: 'dark-content',
-    glassBg: 'rgba(255, 255, 255, 0.85)',
-    liveDot: '#22c55e',
+    glassBg: 'rgba(255, 255, 255, 0.88)',
+    liveDot: '#00652c',
   },
   spacing: {
     xs: 4,

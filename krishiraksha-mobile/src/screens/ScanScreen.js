@@ -87,7 +87,7 @@ export const ScanScreen = ({ navigation }) => {
               { disease: 'Early Blight', confidence: 0.88 },
               { disease: 'Septoria Leaf Spot', confidence: 0.08 },
             ],
-            model_name: 'KrishiRaksha On-Device Triage v1.2',
+            model_name: 'CultivAI On-Device Triage v1.2',
           },
           sampleItem,
         });

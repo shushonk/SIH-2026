@@ -30,7 +30,7 @@ export function CopilotDrawer({ isOpen, onClose }) {
     {
       id: 'm1',
       sender: 'copilot',
-      text: `Namaste! I am your KrishiRaksha AI Agricultural Copilot. I answer using verified ground truth from Field #${selectedFieldId}, our regional spatial clusters, and the certified disease knowledge base. What would you like to investigate?`,
+      text: `Namaste! I am your CultivAI AI Agricultural Copilot. I answer using verified ground truth from Field #${selectedFieldId}, our regional spatial clusters, and the certified disease knowledge base. What would you like to investigate?`,
       citations: [`Field Passport #${selectedFieldId}`, 'ICAR IPM Guidelines'],
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }

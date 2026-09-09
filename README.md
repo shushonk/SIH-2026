@@ -1,9 +1,9 @@
-# KrishiRaksha — AI-Powered Closed-Loop Agricultural Decision-Support Platform
+# CultivAI — AI-Powered Closed-Loop Agricultural Decision-Support Platform
 **Smart India Hackathon 2024 · Problem Statement ID: SIH26131**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshushonk%2FSIH-2026&project-name=krishiraksha&root-directory=krishiraksha-web)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fshushonk%2FSIH-2026&project-name=cultivai&root-directory=krishiraksha-web)
 
-> **Core Product Differentiator**: KrishiRaksha is **not** a simple "upload photo, get disease name" single-shot classifier. It is a **closed-loop clinical decision-support architecture** engineered around uncertain AI observations:
+> **Core Product Differentiator**: CultivAI is **not** a simple "upload photo, get disease name" single-shot classifier. It is a **closed-loop clinical decision-support architecture** engineered around uncertain AI observations:
 > 
 > $$\textbf{Observe} \longrightarrow \textbf{Investigate} \longrightarrow \textbf{Verify} \longrightarrow \textbf{Assess} \longrightarrow \textbf{Prioritize} \longrightarrow \textbf{Act} \longrightarrow \textbf{Monitor} \longrightarrow \textbf{Learn}$$
 

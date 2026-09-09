@@ -37,7 +37,7 @@ export function Navbar({ onOpenCopilot, onOpenStoryline, activeStoryStep }) {
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-bold tracking-tight text-white font-sans">
-                  Krishi<span className="text-emerald-400">Raksha</span>
+                  Cultiv<span className="text-emerald-400">AI</span>
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                   SIH26131

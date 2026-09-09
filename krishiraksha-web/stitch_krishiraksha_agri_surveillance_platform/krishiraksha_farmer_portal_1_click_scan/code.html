@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-container": "#663500",
+          "surface-tint": "#006d30",
+          "error": "#ba1a1a",
+          "background": "#f8f9ff",
+          "tertiary-container": "#676f86",
+          "on-primary": "#ffffff",
+          "surface-bright": "#f8f9ff",
+          "surface-container": "#e5eeff",
+          "primary-fixed-dim": "#79db8d",
+          "secondary": "#904d00",
+          "on-error": "#ffffff",
+          "surface-variant": "#d3e4fe",
+          "inverse-surface": "#213145",
+          "on-primary-fixed": "#00210a",
+          "surface": "#f8f9ff",
+          "primary-container": "#15803d",
+          "on-tertiary-fixed": "#131b2e",
+          "on-background": "#0b1c30",
+          "on-surface-variant": "#3f493f",
+          "tertiary": "#4f576d",
+          "primary-fixed": "#95f8a7",
+          "surface-container-high": "#dce9ff",
+          "inverse-primary": "#79db8d",
+          "on-secondary-fixed-variant": "#6e3900",
+          "secondary-container": "#fe932c",
+          "on-secondary-fixed": "#2f1500",
+          "secondary-fixed": "#ffdcc3",
+          "surface-dim": "#cbdbf5",
+          "primary": "#00652c",
+          "outline": "#6f7a6e",
+          "tertiary-fixed": "#dae2fd",
+          "surface-container-highest": "#d3e4fe",
+          "surface-container-low": "#eff4ff",
+          "on-tertiary-container": "#f2f3ff",
+          "on-error-container": "#93000a",
+          "tertiary-fixed-dim": "#bec6e0",
+          "on-tertiary-fixed-variant": "#3f465c",
+          "on-primary-container": "#d3ffd5",
+          "inverse-on-surface": "#eaf1ff",
+          "secondary-fixed-dim": "#ffb77d",
+          "outline-variant": "#becabc",
+          "surface-container-lowest": "#ffffff",
+          "on-surface": "#0b1c30",
+          "on-primary-fixed-variant": "#005323",
+          "error-container": "#ffdad6",
+          "on-tertiary": "#ffffff",
+          "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "gutter-desktop": "1.5rem",
+          "space-sm": "0.75rem",
+          "margin-mobile": "1rem",
+          "space-2xs": "0.25rem",
+          "margin-tablet": "2rem",
+          "space-lg": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-3xl": "4rem",
+          "space-md": "1rem",
+          "space-2xl": "3rem",
+          "margin-desktop": "3rem",
+          "space-xs": "0.5rem"
+        },
+        "fontFamily": {
+          "display-lg": ["Plus Jakarta Sans"],
+          "body-sm": ["Inter"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "display-lg-mobile": ["Plus Jakarta Sans"],
+          "label-sm": ["Inter"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "body-md": ["Inter"],
+          "label-md": ["Inter"],
+          "code-data": ["Inter"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "metric-stat": ["Plus Jakarta Sans"],
+          "body-lg": ["Inter"],
+          "headline-lg": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-lg": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+          "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+          "headline-md": ["1.375rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "display-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.03em", "fontWeight": "600" }],
+          "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+          "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+          "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+          "code-data": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }],
+          "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "metric-stat": ["2.5rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+          "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="KrishiRaksha Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1U_9xye5kB8Cd_pki_eOOj0oyl2EOxO4rZjf-gUAptmcmj1zUijMGwChCDa4BrEYGD8E7HWPLri-L_-RF9UoYuTysM3PTANcIRzdcaeqyeWSwERX-cGoCAqkuXPfLbZ7l-brSkbhGM7A1zaM5ZM3D81oGS60C8qk0OXIhKQHftx6WZabejjd_djjTsWtniWBL81aSeTc1pig6rqtb34Vw59kxJgVM3b-qW1ELj876iyW8CJQAy208xcoec"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">CultivAI</span><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/40">SIH26131</span></div><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container-low rounded-xl" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a aria-current="page" class="px-space-md py-1.5 transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="farmer-portal" href="#">Farmer Portal</a><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="expert-desk" href="#">Expert Desk</a><a class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors" data-path="district-surveillance-map" href="#">District Surveillance Map</a></nav></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-surface-container-lowest border border-outline-variant/50"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface">Online (Sync Active)</span></div><div class="hidden md:flex items-center px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm"><span class="font-semibold text-on-surface mr-1">Role:</span> Farmer / Officer</div><div class="flex items-center gap-1 px-space-xs py-1 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined text-base">translate</span><span class="font-medium">मराठी (Marathi)</span></div><button aria-label="Toggle theme" class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-xl">light_mode</span></button><div class="flex items-center pl-space-2xs border-l border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJuNIGd4mb5-jLWJaRaypNrgF0eA-_ZFFzK4kxcHk9jy3ujEcDx2dLjcBprwhrWGCx8bAYzC8IY2e-dqXwZe9mQBpsCZZ2ex2GRVt0DGENShwz2yPR-HiPOjl09fSnRBa40gafoE8bnp9DOAuNjZPe3SjkLnE1I077sSgKtgACKuQgCRgrOVdJmBeeReRPLqZCnUPLBsMF9A2UA89XsmAeS9UkCmjNp_Wi58jKs_VE4TvjWeTK9SkT"></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen w-full px-gutter-desktop py-space-xl"><div class="flex flex-col w-full">
+<!-- Top Operational Banner: Weather & Regional Alert -->
+<div class="mb-space-lg p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">अकोला विभाग: कापूस करपा सतर्कता</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">उच्च जोखीम (High Risk)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Akola District Agromet Advisory: High relative humidity (84%) triggering fungal incubation in Gossypium hirsutum.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="text-right hidden sm:block">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">स्थानिक हवामान (Local Radar)</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">28°C • आर्द्रता 84% • वारा 12 km/h</span>
+</div>
+<button class="px-space-sm py-2 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-base">cloud_sync</span>
+<span class="">हवामान अंदाज</span>
+</button>
+</div>
+</div>
+<!-- Main 12-Column Grid Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+<!-- LEFT SIDEBAR: Navigation & Micro-Transactions (Cols 1-4) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Primary Action Navigation Menu -->
+<nav class="p-space-sm rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="px-space-xs py-2 mb-1 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">शेतकरी मुख्य मेनू (Quick Triage)</span>
+<span class="font-code-data text-code-data text-surface-tint">ID: MH-AKL-882</span>
+</div>
+<a class="flex items-center justify-between p-space-sm rounded-lg bg-primary-container text-on-primary transition-all" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<div>
+<span class="font-label-md text-label-md block font-semibold">1-Click Fast Scan</span>
+<span class="font-body-sm text-body-sm text-on-primary-container opacity-90">झटपट पीक रोग निदान</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low text-on-surface transition-colors" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-xl text-primary">history_edu</span>
+<div>
+<span class="font-label-md text-label-md block font-medium">My Field History</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">माझी शेती नोंद (14 scans)</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">3 शेतं</span>
+</a>
+<a class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low text-on-surface transition-colors" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-xl text-primary">campaign</span>
+<div>
+<span class="font-label-md text-label-md block font-medium">Advisory Feed</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">सल्लागार सूचना व कीड अलर्ट</span>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-low text-on-surface transition-colors" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-xl text-primary">smart_toy</span>
+<div>
+<span class="font-label-md text-label-md block font-medium">Ask AI Assistant</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">कृषिमित्र AI (ध्वनी प्रश्न)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-lg text-outline">mic</span>
+</a>
+</nav>
+<!-- Micro-Transaction Sachet Pack Card (₹15 Rural Accessibility Anchor) -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-surface-container-lowest to-surface-container-low p-space-lg shadow-sm">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-primary/5 pointer-events-none"></div>
+<div class="flex items-start justify-between mb-space-sm">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="px-2 py-0.5 rounded-md bg-secondary/15 text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wide">Affordable Micro-Pack</span>
+<span class="material-symbols-outlined text-base text-secondary">bolt</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Sachet Scan Pack (₹15)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">स्वस्त व तात्काळ 5 पीक तपासण्या</p>
+</div>
+</div>
+<!-- Progress Metrics -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest mb-space-md shadow-inner">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface">Active Quota: <strong>5 / 5 remaining</strong></span>
+<span class="font-code-data text-code-data text-primary font-semibold">100% Valid</span>
+</div>
+<!-- Visual progress dots -->
+<div class="grid grid-cols-5 gap-1.5 py-1">
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+<div class="h-2 rounded-full bg-primary"></div>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">वैधता: पुढील ३० दिवस (Valid till 30 Oct)</span>
+</div>
+<!-- Recharge CTA with Indian UPI Brand tags -->
+<div class="flex flex-col gap-space-xs">
+<button class="w-full py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 hover:bg-surface-tint shadow-sm transition-all active:scale-[0.99]">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+<span class="">पॅक रिचार्ज करा • Recharge ₹15</span>
+</button>
+<div class="flex items-center justify-center gap-space-sm pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Instant UPI:</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">GPay</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">PhonePe</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">BHIM</span>
+</div>
+</div>
+</div>
+<!-- Quick Soil / Leaf Protocol Reference -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-2 mb-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-xl">camera_outdoor</span>
+<span class="font-headline-sm text-headline-sm">योग्य फोटो कसा काढावा?</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5">check_circle</span>
+<span class="">पानावरील डाग सूर्यप्रकाशात स्पष्ट दिसू द्या.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5">check_circle</span>
+<span class="">कॅमेरा पानापासून साधारण १०-१५ सेमी अंतरावर ठेवा.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5">check_circle</span>
+<span class="">रोगट पानाचा वरचा व मागचा भाग दोन्ही तपासा.</span>
+</li>
+</ul>
+</div>
+</aside>
+<!-- MAIN CENTER AREA: Scanner & Diagnostic Intelligence (Cols 5-12) -->
+<main class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- Guided Scan Uploader Section -->
+<section class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm relative overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">AI रोग निदान कॅमेरा</h1>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision Multi-Spectral Neural Triage (Crop Disease SIH26131)</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-code-data text-code-data self-start sm:self-auto">Edge Model: v4.2.1-Offline</span>
+</div>
+<!-- Interactive Drag & Drop Box with Telemetry overlay -->
+<div class="relative group p-space-xl rounded-xl bg-surface-container-low transition-all text-center flex flex-col items-center justify-center cursor-pointer min-h-[220px]">
+<div class="w-16 h-16 rounded-full bg-primary-container/10 flex items-center justify-center text-primary mb-space-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">ड्रॉप करा किंवा फोटो निवडा</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-md">High-resolution close-up of infected leaves, stem blights, or insect bore marks</p>
+<div class="flex flex-wrap items-center justify-center gap-space-sm">
+<button class="px-space-lg py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-2 hover:bg-surface-tint shadow-md transition-all">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+<span class="">Take Instant Photo (कॅमेरा उघडा)</span>
+</button>
+<button class="px-space-lg py-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-medium flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-xl">file_upload</span>
+<span class="">Upload from Gallery (गॅलरी)</span>
+</button>
+</div>
+</div>
+<!-- Real-Time Photo Quality Indicator Meters -->
+<div class="mt-space-md pt-space-md grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-lg">blur_off</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Blur Index</span>
+<span class="font-label-md text-label-md text-primary font-semibold truncate block">Good (Sharp edges)</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-lg">lightbulb</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Lighting Meter</span>
+<span class="font-label-md text-label-md text-secondary font-semibold truncate block">Optimal (820 Lux)</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-lg">filter_center_focus</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Framing &amp; Axis</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate block">Centered Leaf Focus</span>
+</div>
+</div>
+</div>
+</section>
+<!-- RECENT SCAN DOSSIER: Cotton Leaf Detection Detailed Card -->
+<section class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<!-- Scan Header & Badges -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<div class="flex items-center gap-space-xs mb-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">मागील तपासणी अहवाल (Latest Dossier)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                Scanned today, 10:14 AM
+              </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">कापूस करपा रोग (Cercospora Leaf Spot)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Scientific: <i>Cercospora gossypina</i> • Crop: Cotton (Gossypium) • Plot 2B</p>
+</div>
+<!-- Diagnostic Confidence Pill -->
+<div class="flex flex-col items-end shrink-0">
+<div class="px-space-md py-1.5 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-base">verified</span>
+<span class="">94% AI Confidence</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Validated by Vidarbha Agri Net</span>
+</div>
+</div>
+<!-- Split Diagnostic Canvas: Image with bounding box + Clinical findings -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-stretch">
+<!-- Image Container with Visual Detection Hotspots -->
+<div class="md:col-span-5 relative rounded-xl overflow-hidden bg-surface-container shadow-inner min-h-[260px]">
+<img class="w-full h-full object-cover" data-alt="Macro close-up shot of a green cotton leaf showing distinct circular reddish brown cercospora fungal leaf spots with dark purple borders under bright daylight in a Vidarbha agricultural field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5w8DQy7FmJHkMr61bnb4XG_fTKfhiTylkyC1Z8-SyYeZPDSi8Y7jByfY84XyNbKfDrGCXpCuPXWgHSv9FLRZvXEP6VJWFdm1Vus0yNQhl6emktNz_b2YvEzwh-tK6olF2fuTFrYG8diAPkqGJDbCcYQovVhb5W_Epv6GYZJCk0oWYU4wnhTjzMarZBFF729gWvs9p5n4QxW5RnT2KRLUwOYAAgooOd6kbwH1n9OrNxzeHYiTE17i3">
+<!-- Pathogen Bounding Box Mock -->
+<div class="absolute inset-8 rounded border-2 border-dashed border-error bg-error/10 pointer-events-none flex flex-col justify-between p-2">
+<div class="flex justify-between items-start">
+<span class="px-1.5 py-0.5 rounded bg-error text-on-error font-label-sm text-label-sm">Hotspot: Cercospora</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest/90 text-on-surface font-code-data text-code-data">conf: 0.94</span>
+</div>
+<div class="self-end px-1.5 py-0.5 rounded bg-surface-container-lowest/80 text-on-surface font-code-data text-code-data">
+                Area: 28% necrotic
+              </div>
+</div>
+<!-- Zoom & Expand Action Overlay -->
+<div class="absolute bottom-2 left-2 flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-lowest/90 text-on-surface shadow hover:bg-surface-container-lowest transition-colors" title="Zoom In">
+<span class="material-symbols-outlined text-base">zoom_in</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-lowest/90 text-on-surface shadow hover:bg-surface-container-lowest transition-colors" title="Toggle Heatmap">
+<span class="material-symbols-outlined text-base">layers</span>
+</button>
+</div>
+</div>
+<!-- Practical Action Guidelines (Multi-layered cards) -->
+<div class="md:col-span-7 flex flex-col justify-between gap-space-sm">
+<!-- Advice Card 1: Green / Organic NSKE Protocol -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">eco</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">जैविक उपचार (Organic Remedy)</span>
+<span class="px-2 py-0.2 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm">प्राधान्य १</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+<strong>५% निंबोळी अर्क (NSKE) फवारा:</strong> १५ लिटर पंपासाठी ५० मिली वापरा. पानांच्या मागील भागावर विशेष फवारणी करा.
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Eco-safe • Pollinator friendly • Low cost (₹40/acre)</span>
+</div>
+</div>
+<!-- Advice Card 2: Caution & Spore Spread Management -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">notification_important</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">महत्त्वाची दक्षता (Immediate Caution)</span>
+<span class="px-2 py-0.2 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">सावध राहा</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+                  रासायनिक बुरशीनाशक घाईघाईत फवारू नका. पुढील ४८ तास रोगाचा प्रसार (spore spread) निरीक्षण करा.
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Wait for verification before applying Carbendazim.</span>
+</div>
+</div>
+<!-- Advice Card 3: Regional Weather Sync Advisory -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">thunderstorm</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">हवामान सल्ला (Weather Sync)</span>
+<span class="font-code-data text-code-data text-on-surface-variant">अकोला रडार</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+                  पुढील ६ तासांत पावसाची ६०% शक्यता आहे. आकाश स्वच्छ झाल्यावरच फवारणीचे नियोजन करावे.
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant block mt-1">Prevents chemical runoff wash-off into irrigation furrows.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Marathi Audio Playback Bar & Specialist Escalation Footer -->
+<div class="mt-space-xs pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<!-- Audio Playback Pill -->
+<button class="w-full sm:w-auto px-space-lg py-2.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 hover:bg-surface-tint shadow transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-xl">volume_up</span>
+<span class="">मराठीत ऑडिओ ऐका (Listen in Marathi)</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest/20 font-code-data text-code-data text-on-primary">1:12 Min</span>
+</button>
+<!-- Secondary Actions: Export & Send to Extension Officer -->
+<div class="flex items-center gap-space-xs w-full sm:w-auto justify-end">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center gap-1.5 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+<span class="">WhatsApp शेअर्स</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center gap-1.5 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span class="">कृषी सहाय्यकाला पाठवा</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Additional Regional Field Intelligence Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Outbreak Proximity Tracker -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">नजीकचा प्रादुर्भाव (Neighborhood Radar)</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">५ किमी परीघ</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">Nearby farms scanned in Murtizapur taluk (Akola):</p>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low font-body-sm text-body-sm">
+<span class="text-on-surface">सुभाष बापू शेत (१.२ किमी)</span>
+<span class="text-error font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                  करपा पॉझिटिव्ह
+                </span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low font-body-sm text-body-sm">
+<span class="text-on-surface">गणेश काकडे शेत (२.८ किमी)</span>
+<span class="text-primary font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                  निरोगी कापूस
+                </span>
+</div>
+</div>
+</div>
+<a class="mt-space-md font-label-md text-label-md text-primary font-semibold flex items-center gap-1 hover:underline" href="#">
+<span class="">जिल्हा निगराणी नकाशा उघडा (Open Surveillance GIS)</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+<!-- Government Subsidized Organic Inputs Finder -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">कृषी सेवा केंद्र उपलब्धता (Input Stock)</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">सरकारी मान्यताप्राप्त</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">Verified Neem Oil &amp; Bio-control agents near Akola MIDC:</p>
+<div class="space-y-2">
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-on-surface">महाबीज कृषी केंद्र, अकोला</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">NSKE 1500 PPM • ₹240 / Ltr</div>
+</div>
+<span class="px-2 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold">स्टॉकमध्ये आहे</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="">कॉल करा: १८००-१८०-१५५१ (Kisan Call Center)</span>
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- FLOATING PERSISTENT AI ASSISTANT WIDGET (Bottom Dock) -->
+<div class="mt-space-2xl sticky bottom-4 z-40 w-full max-w-4xl mx-auto">
+<div class="rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-xl p-space-md">
+<!-- Chatbot Header & Status Line -->
+<div class="flex items-center justify-between mb-space-xs pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ask CultivAI (कृषी मित्र सहाय्यक)</h3>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Online • Multilingual Voice &amp; Marathi Devanagari Support</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant" title="Clear history">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-code-data text-code-data">SIH26131-LLM</span>
+</div>
+</div>
+<!-- Suggested Quick Prompt Chips -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mb-space-xs">
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-all">
+          आज फवारणी करावी का? (Can I spray today?)
+        </button>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-all">
+          सेंद्रिय उपाय काय आहेत? (Alternative organic remedies?)
+        </button>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm hover:bg-primary hover:text-on-primary transition-all">
+          जवळच्या कृषी सेवा केंद्राचे दर (Price query)
+        </button>
+</div>
+<!-- Chat Input Box with Audio Input Accent -->
+<div class="flex items-center gap-space-xs">
+<div class="relative flex-1">
+<input class="w-full pl-4 pr-10 py-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="तुमचा प्रश्न विचारा किंवा बोला... (Ask in Marathi or English)" type="text">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:text-surface-tint p-1 rounded-full" title="Voice Input (मराठीत बोला)">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+</div>
+<button class="h-12 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 hover:bg-surface-tint shadow-md transition-all shrink-0">
+<span class="material-symbols-outlined text-lg">send</span>
+<span class="hidden sm:inline">विचारा</span>
+</button>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant/30 py-space-lg"><div class="w-full px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm"><div class="">CultivAI System (Problem SIH26131) • National Agronomic Disease Vigilance Grid</div><div class="flex items-center gap-space-md"><span class="hover:text-on-surface cursor-pointer">Protocols</span><span class="hover:text-on-surface cursor-pointer">State Extension Desk</span><span class="hover:text-on-surface cursor-pointer">Field Telemetry</span></div></div></footer>
+
+</body></html>
